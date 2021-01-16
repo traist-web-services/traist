@@ -29,7 +29,7 @@ export default function Home({ file }) {
     label: 'Home Page',
     fields: [{
       label: 'Slides',
-      name: 'rawJson.slides',
+      name: 'slides',
       component: 'group-list',
       description: 'Slides',
       itemProps: item => ({
@@ -51,8 +51,7 @@ export default function Home({ file }) {
           label: 'Image',
           name: 'image',
           component: 'image',
-          parse: media => `/images/${media.filename}`,
-          uploadDir: () => '/images/',
+          parse: media => `/images/${media.filename}`
         },
       ],
     },
@@ -72,7 +71,7 @@ export default function Home({ file }) {
           <Header />
           <Hero data={data} />
         </div>
-        <Slider />
+        <Slider slides={data.slides} />
         <Contact />
         <Footer />
       </InlineForm>
