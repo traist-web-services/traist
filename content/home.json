@@ -1,4 +1,12 @@
 {
   "title": "Your business.\nOur solutions.",
-  "subtitle": "Need a partner to help you make the most of web technologies?\n\nTraist specialises in building bespoke solutions to maximise value across your business."
+  "subtitle": "Need a partner to help you make the most of web technologies?\n\nTraist specialises in building bespoke solutions to maximise value across your business.",
+  "rawJson": {
+    "slides": [
+      {
+        "text": "# We consult\n\nNeed help making data-driven decisions? Traist can help. We can provide tools and techniques for you and your teams to make decisions, and advise and consult along the way.\n\nOr maybe you're looking to trim excess fat on bloated business processes, utilising your existing infrastructure and tools. We'll help streamline your ways of working, and bring your team along for the ride.",
+        "image": "/images/analytics.jpg"
+      }
+    ]
+  }
 }
