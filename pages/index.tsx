@@ -33,8 +33,9 @@ export default function Home({ file }) {
       component: 'group-list',
       description: 'Slides',
       itemProps: item => ({
-        text: item.id,
-        image: item.name,
+        text: item.text,
+        image: item.image,
+        label: 'Slide'
       }),
       defaultItem: () => ({
         text: 'Sample text',
@@ -50,8 +51,8 @@ export default function Home({ file }) {
           label: 'Image',
           name: 'image',
           component: 'image',
-          parse: media => `/${media.filename}`,
-          uploadDir: () => '/public/',
+          parse: media => `/images/${media.filename}`,
+          uploadDir: () => '/images/',
         },
       ],
     },
