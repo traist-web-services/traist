@@ -25,7 +25,7 @@ export default function Hero() {
           across your business.
       </p>
         <p className="py-5 text-3xl">
-          <Button type="link" href="learn-more" colour="secondary" size="lg">Learn More</Button>
+          <Button type="link" href="/learn-more" colour="secondary" size="lg">Learn More</Button>
         </p>
       </div>
     </section>

@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
-export default function Slide({active, slide}) {
+export default function Slide({active, slide, index}) {
   const {text, image} = slide;
   return (
-    <div
+    <div key={index}
                 className={`absolute left-full top-0 bg-white flex-grow w-full min-h-full flex shadow-md transform z-10 duration-1000 rounded-xl ${active ? '-translate-x-full' : ''}`}
               >
               <div className="relative w-1/2">

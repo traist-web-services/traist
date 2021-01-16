@@ -36,13 +36,13 @@ export default function Slider(props) {
         >
       <div className="relative flex-grow overflow-x-hidden w-full h-full rounded-xl" id="slides">
         {slides.map((slide, index) => {
-          return <Slide slide={slide} active={index === slideToDisplay} />
+          return <Slide slide={slide} key={index} active={index === slideToDisplay} />
         })}
       </div>
       <div className="relative -bottom-12 text-white" id="slide-nav">
         {slides.map((slide, index) => {
           return (
-            <span className={`mx-2 w-4 h-4 inline-block border border-white rounded-full duration-200 transition-color cursor-pointer ${slideToDisplay === index ? 'bg-white' : ''}`} onClick={() => setSlideToDisplay(index)}> </span>
+            <span className={`mx-2 w-4 h-4 inline-block border border-white rounded-full duration-200 transition-color cursor-pointer ${slideToDisplay === index ? 'bg-white' : ''}`} onClick={() => setSlideToDisplay(index)} key={index}> </span>
           )
         })}
       </div>
