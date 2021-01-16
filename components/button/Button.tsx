@@ -2,7 +2,8 @@ import Link from 'next/link';
 
 export default function Button({ colour = 'primary', size = 'md', type = 'submit', href, children, ...rest }) {
   const sizes = {
-    lg: "text-3xl px-3 py-2",
+    xl: "text-3xl px-3 py-2",
+    lg: "text-xl px-3 py-2",
     md: "px-2 py-1",
     sm: "px-2 py-1"
   }

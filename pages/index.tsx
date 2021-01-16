@@ -33,15 +33,17 @@ export default function Home({ file }) {
       component: 'group-list',
       description: 'Slides',
       itemProps: item => ({
-        text: item.text,
-        image: item.image,
-        label: 'Slide'
+        label: item.title
       }),
       defaultItem: () => ({
         text: 'Sample text',
         image: 'https://source.unsplash.com/random'
       }),
-      fields: [
+      fields: [{
+        label: 'Title',
+        name: 'title',
+        component: 'text'
+      },
         {
           label: 'Text',
           name: 'text',

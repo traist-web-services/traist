@@ -12,13 +12,13 @@ export default function Slider(props) {
         const nextSlide = slideToDisplay + 1 > props.slides.length - 1 ? 0 : (slideToDisplay + 1)
         setSlideToDisplay(nextSlide);
       }
-    }, 2000)
+    }, 20000)
     return () => clearInterval(interval);
   }, [slideToDisplay, timerPaused])
 
   return (
     <section
-          className="relative min-h-screen bg-brand-500 p-24 flex flex-col items-center"
+          className="relative min-h-screen bg-brand-500 p-4 md:p-12 lg:p-24 flex flex-col items-center"
           onMouseOver={() => setTimerPaused(true)}
           onMouseOut={() => setTimerPaused(false)}
         >
@@ -31,83 +31,10 @@ export default function Slider(props) {
       <div className="relative -bottom-12 text-white" id="slide-nav">
         {props.slides.map((slide, index) => {
             return (
-              <span className={`mx-2 w-4 h-4 inline-block border border-white rounded-full duration-200 transition-color cursor-pointer ${slideToDisplay === index ? 'bg-white' : ''}`} onClick={() => setSlideToDisplay(index)} key={index}> </span>
+              <span className={`hidden lg:block mx-2 w-4 h-4 inline-block border border-white rounded-full duration-200 transition-color cursor-pointer ${slideToDisplay === index ? 'bg-white' : ''}`} onClick={() => setSlideToDisplay(index)} key={index}> </span>
             )
           })}        
       </div>
     </section>
   )
 }
-/*
-
-
-
-(function() {
-  if (!document.querySelector('#slides') || !document.querySelector('#slide-nav')) {
-    return;
-  }
-
-  const TIMEOUT = document.querySelector('#slides').dataset.timeout || 15000;
-
-  let interval = null;
-  let slideToDisplay = 0;
-  const slideFrame = document.querySelector('#slides');
-  const slides = slideFrame.children;
-  const nav = document.querySelector('#slide-nav');
-
-  interval = setInterval(showNextSlide, TIMEOUT);
-
-  slideFrame.parentElement.addEventListener('mouseover', () => {
-    clearInterval(interval);
-    interval = null;
-  });
-
-  slideFrame.parentElement.addEventListener('mouseout', () => {
-    interval = interval ?? setInterval(showNextSlide, TIMEOUT);
-  });
-
-  for (let i = 0; i < slides.length; i++) {
-    const navButton = document.createElement('span');
-    navButton.classNameList.add(
-      'mx-2',
-      'w-4',
-      'h-4',
-      'inline-block',
-      'border',
-      'border-white',
-      'rounded-full',
-      'duration-200',
-      'transition-color',
-      'cursor-pointer'
-    );
-    navButton.innerText = ' ';
-    navButton.addEventListener('click', () => {
-      slideToDisplay = i;
-      clearInterval(interval);
-      showNextSlide();
-      interval = interval ?? setInterval(showNextSlide, TIMEOUT);
-    });
-    nav.appendChild(navButton);
-  }
-
-  function showNextSlide() {
-    for (let i = 0; i < slides.length; i++) {
-      if (slideToDisplay === i) {
-        slides[i].classNameList.add('-translate-x-full');
-        nav.children[i].classNameList.add('bg-white');
-      } else {
-        slides[i].classNameList.remove('-translate-x-full');
-        nav.children[i].classNameList.remove('bg-white');
-      }
-    }
-
-    slideToDisplay++;
-
-    if (slideToDisplay > (slides.length - 1)) {
-      slideToDisplay = 0;
-    }
-  }
-
-  showNextSlide();
-})();
-*/
