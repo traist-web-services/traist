@@ -2,18 +2,6 @@ import { useState, useEffect } from 'react';
 import Slide from './Slide';
 
 export default function Slider(props) {
-  const slides = [{
-    image: 'https://source.unsplash.com/random',
-    text: 'Test text 1'
-  },
-  {
-    image: 'https://source.unsplash.com/random',
-    text: 'Test text 2'
-  },
-  {
-    image: 'https://source.unsplash.com/random',
-    text: 'Test text 3'
-  }];
 
   const [slideToDisplay, setSlideToDisplay] = useState(0);
   const [timerPaused, setTimerPaused] = useState(false);
@@ -21,7 +9,7 @@ export default function Slider(props) {
   useEffect(() => {
     const interval = setInterval(() => {
       if (!timerPaused) {
-        const nextSlide = slideToDisplay + 1 > slides.length - 1 ? 0 : (slideToDisplay + 1)
+        const nextSlide = slideToDisplay + 1 > props.slides.length - 1 ? 0 : (slideToDisplay + 1)
         setSlideToDisplay(nextSlide);
       }
     }, 2000)
@@ -36,12 +24,12 @@ export default function Slider(props) {
         >
       <div className="relative flex-grow overflow-x-hidden w-full h-full rounded-xl" id="slides">
         
-      {slides.map((slide, index) => {
+      {props.slides.map((slide, index) => {
           return <Slide slide={slide} key={index} active={index === slideToDisplay} />
         })}
       </div>
       <div className="relative -bottom-12 text-white" id="slide-nav">
-        {slides.map((slide, index) => {
+        {props.slides.map((slide, index) => {
             return (
               <span className={`mx-2 w-4 h-4 inline-block border border-white rounded-full duration-200 transition-color cursor-pointer ${slideToDisplay === index ? 'bg-white' : ''}`} onClick={() => setSlideToDisplay(index)} key={index}> </span>
             )
