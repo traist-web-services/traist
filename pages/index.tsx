@@ -1,31 +1,41 @@
+// Next Imports
+import { GetStaticProps } from 'next';
 import Head from 'next/head'
 
+// Tina imports
+import { useForm, usePlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
-import { GetStaticProps } from 'next';
+import { useGithubToolbarPlugins } from 'react-tinacms-github';
+import { InlineForm } from 'react-tinacms-inline';
 
+// My components
 import Layout from '../components/layout/Layout';
 import Header from '../components/layout/Header';
 import Hero from '../components/hero/Hero';
 import Slider from '../components/slider/Slider';
 import Contact from '../components/contact-form/ContactForm';
 import Footer from '../components/layout/Footer';
-import { parse } from 'path';
 
 export default function Home({file}) {
   const data = file.data;
+  const [, form] = useForm(data)
+  usePlugin(form)
+  useGithubToolbarPlugins();
   return (
     <Layout>
       <Head>
         <title>Traist - Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <Hero />
-      </div>
-      <Slider />
-      <Contact />
-      <Footer />
+      <InlineForm form={form}>
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <Hero />
+        </div>
+        <Slider />
+        <Contact />
+        <Footer />
+      </InlineForm>
     </Layout>
   )
 }

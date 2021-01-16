@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Button from '../button/Button';
 
+import InlineTextarea from 'react-tinacms-inline';
+
 export default function Hero() {
   return (
     <section className="px-4 md:px-24 z-0 flex flex-col flex-grow justify-center overflow-hidden relative bg-gradient-to-br from-brand-50 via-brand-200 to-brand-300">
@@ -13,9 +15,8 @@ export default function Hero() {
         />
       </div>
       <h1 className="font-bold text-6xl md:text-9xl py-3">
-        Your business.<br />
-      Our solutions.
-    </h1>
+        <InlineTextarea name="title" />
+      </h1>
       <div className="max-w-3xl text-brand-600">
         <p className="py-3 text-3xl">
           Need a partner to help you make the most of web technologies?
