@@ -3,9 +3,9 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head'
 
 // Tina imports
-import { useForm, usePlugin } from 'tinacms';
+import { useCMS, usePlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
-import { useGithubToolbarPlugins } from 'react-tinacms-github';
+import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
 import { InlineForm } from 'react-tinacms-inline';
 
 // My components
@@ -16,9 +16,48 @@ import Slider from '../components/slider/Slider';
 import Contact from '../components/contact-form/ContactForm';
 import Footer from '../components/layout/Footer';
 
-export default function Home({file}) {
-  const data = file.data;
-  const [, form] = useForm(data)
+export default function Home({ file }) {
+  const cms = useCMS();
+  if (cms.enabled) {
+    import("react-tinacms-editor").then(
+      ({ MarkdownFieldPlugin }) => {
+        cms.plugins.add(MarkdownFieldPlugin)
+      }
+    )
+  }
+  const formOptions = {
+    label: 'Home Page',
+    fields: [{
+      label: 'Slides',
+      name: 'rawJson.slides',
+      component: 'group-list',
+      description: 'Slides',
+      itemProps: item => ({
+        text: item.id,
+        image: item.name,
+      }),
+      defaultItem: () => ({
+        text: 'Sample text',
+        image: 'https://source.unsplash.com/random'
+      }),
+      fields: [
+        {
+          label: 'Text',
+          name: 'text',
+          component: 'markdown',
+        },
+        {
+          label: 'Image',
+          name: 'image',
+          component: 'image',
+          parse: media => `/${media.filename}`,
+          uploadDir: () => '/public/',
+        },
+      ],
+    },
+    ],
+  }
+  const [data, form] = useGithubJsonForm(file, formOptions)
   usePlugin(form)
   useGithubToolbarPlugins();
   return (
@@ -30,7 +69,7 @@ export default function Home({file}) {
       <InlineForm form={form}>
         <div className="min-h-screen flex flex-col">
           <Header />
-          <Hero />
+          <Hero data={data} />
         </div>
         <Slider />
         <Contact />
@@ -40,7 +79,7 @@ export default function Home({file}) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async function ({preview, previewData}) {
+export const getStaticProps: GetStaticProps = async function ({ preview, previewData }) {
   if (preview) {
     return getGithubPreviewProps({
       ...previewData,
@@ -60,5 +99,5 @@ export const getStaticProps: GetStaticProps = async function ({preview, previewD
       }
     }
   }
-  
+
 }

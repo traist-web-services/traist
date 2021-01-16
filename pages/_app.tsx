@@ -1,7 +1,7 @@
 import type { AppProps /*, AppContext */ } from 'next/app'
 
 import "../styles/globals.css";
-import { TinaCMS, TinaProvider } from "tinacms";
+import { TinaCMS, TinaProvider, ModalProvider } from "tinacms";
 import { useMemo } from "react";
 import { GithubClient } from "react-tinacms-github";
 import { NextGithubMediaStore } from "next-tinacms-github";
@@ -45,8 +45,6 @@ const clientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
   };
 
 function MyApp({ Component, pageProps }) {
-
-  console.log(pageProps)
   const tinaConfig = {
     enabled: pageProps.preview,
     toolbar: pageProps.preview,
@@ -68,7 +66,9 @@ function MyApp({ Component, pageProps }) {
         onLogout={exitEditMode}
         error={pageProps.error}
       >
-        <Component {...pageProps} />
+        <ModalProvider>
+          <Component {...pageProps} />
+        </ModalProvider>
       </TinacmsGithubProvider>
     </TinaProvider>
   );
