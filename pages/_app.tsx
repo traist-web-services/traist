@@ -1,4 +1,6 @@
 import type { AppProps /*, AppContext */ } from "next/app";
+import path from 'path';
+path.resolve('./content'); // Let's tell Next that we need the content folder
 
 import "../styles/globals.css";
 import { TinaCMS, TinaProvider, ModalProvider } from "tinacms";
