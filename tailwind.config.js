@@ -4,7 +4,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   purge: {
     enabled: process.env.NODE_ENV === "production",
-    content: ["./**/*.html", "./src/**/*.js"],
+    content: ["./**/*.html", "./**/*.js", './**/*.ts*'],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
