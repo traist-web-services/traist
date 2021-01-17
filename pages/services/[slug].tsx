@@ -23,10 +23,6 @@ import { InlineWysiwyg } from '../../components/inline-wysiwyg/InlineWysiwyg';
 
 export default function ServiceTemplate(props) {
   const cms = useCMS();
-  const test = async () => {
-    console.log(await cms.api.github)
-  }
-  test();
   if (cms.enabled) {
     import("react-tinacms-editor").then(
       ({ MarkdownFieldPlugin }) => {
@@ -117,7 +113,8 @@ export const getStaticProps: GetStaticProps = async function ({ preview, preview
           markdownBody: data.content,
         }
       }
-    }
+    },
+    revalidate: 3
   }
 }
 

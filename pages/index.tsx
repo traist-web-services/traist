@@ -84,7 +84,6 @@ export const getStaticProps: GetStaticProps = async function ({ preview, preview
         ...githubPreviewProps.props
       }
     }
-    console.log(githubPreviewProps)
     return returnObj;
   }
 
@@ -98,6 +97,7 @@ export const getStaticProps: GetStaticProps = async function ({ preview, preview
         fileRelativePath: 'content/home.json',
         data: (await import('../content/home.json')).default
       }
-    }
+    },
+    revalidate: 3
   }
 }
