@@ -1,5 +1,5 @@
 ---
-title: We Create Things
+title: We Create
 image: /images/code.jpg
 excerpt: >-
   Whether you need a brand new website to boost your brand, or a custom web app
