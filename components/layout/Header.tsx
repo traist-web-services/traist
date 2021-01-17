@@ -24,25 +24,25 @@ export default function Header() {
   }
   const menuEl = Object.keys(menu).map((key, index) => {
     if (Array.isArray(menu[key])) {
-      const subElements = 
-        <ul 
+      const subElements =
+        <ul
           className={`${subMenuToDisplay === index ? 'translate-y-full' : ''} overflow-hidden transition-transform transform duration-500 absolute bg-white border-4 border-brand-500 -mb-4 w-full rounded-b-lg border-t-0 bottom-0 -ml-4 flex flex-col`}
           style={{
             zIndex: -10
           }}
-        >    
-          {menu[key].map(el => 
-            <li className="hover:text-brand-400"><Link href={el.linkTo}>{el.name}</Link></li>
+        >
+          {menu[key].map(el =>
+            <li className="hover:text-brand-400" key={key}><Link href={el.linkTo}>{el.name}</Link></li>
           )}
         </ul>;
-          return (
-            <li className="relative w-full group px-4 h-full text-center" id={""+index} onClick={() => handleClick(index)}>
-              <div className="flex items-center hover:text-brand-400">{key} <div className={`ml-2 transform transition-transform duration-200 ${subMenuToDisplay === index ? 'rotate-180' : '' }`}><ChevronDown /></div></div>
-              {subElements}
-            </li>
-          )
+      return (
+        <li className="relative w-full group px-4 h-full text-center" id={"" + index} onClick={() => handleClick(index)}>
+          <div className="flex items-center hover:text-brand-400">{key} <div className={`ml-2 transform transition-transform duration-200 ${subMenuToDisplay === index ? 'rotate-180' : ''}`}><ChevronDown /></div></div>
+          {subElements}
+        </li>
+      )
     }
-    return (<li className="relative w-full group px-4 h-full" id={""+index} onClick={handleClick}>{key}</li>);
+    return (<li className="relative w-full group px-4 h-full" id={"" + index} onClick={handleClick}><Link href={menu[key]}>{key}</Link></li>);
   });
   return (
     <header className="relative flex-grow-0 border-b-4 border-brand-500 bg-white w-full z-10">
@@ -66,10 +66,3 @@ export default function Header() {
     </header>
   )
 }
-
-/* <li className="relative w-full group px-4 h-full" >
-  Test Menu
-  <ul className={`${subMenuToDisplay === "1" ? 'block' : 'hidden'} absolute top-full bg-white p-4 mt-4 left-0 border-4 border-t-0 border-brand-500 rounded-b-lg`}>
-    <li>Sub menu</li>
-  </ul>
-</li> */

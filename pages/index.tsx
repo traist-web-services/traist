@@ -24,7 +24,7 @@ import DataContext from '../contexts/DataContext';
 export default function Home({ file, allServices }) {
   const slides = allServices ? allServices.map(service => {
     return {
-      text: service.frontmatter.excerpt.replaceAll('\\n', "\n"),
+      text: service.frontmatter.excerpt,
       image: service.frontmatter.image,
       title: service.frontmatter.title,
       linkTo: `/services/${service.slug}`
