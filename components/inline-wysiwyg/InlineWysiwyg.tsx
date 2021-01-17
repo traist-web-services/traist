@@ -1,9 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useCMS } from 'tinacms'
 
-export function InlineWysiwyg(props, children, ...rest) {
+interface Props {
+  sticky?: boolean|string,
+  children?: any,
+  name: string,
+  format: 'markdown'|'html'
+}
+
+export function InlineWysiwyg(props:Props) {
   const cms = useCMS()
-  const [{ InlineWysiwyg }, setEditor] = useState({})
+  const [{ InlineWysiwyg }, setEditor]:[any, any] = useState({
+    InlineWysiwyg: null
+  })
 
   useEffect(() => {
     if (!InlineWysiwyg && cms.enabled) {

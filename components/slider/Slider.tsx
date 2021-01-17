@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
-import Slide from './Slide';
+import { useState, useEffect, ReactChild } from 'react';
+import Slide, { SlideObject } from './Slide';
+
 
 export default function Slider(props) {
 
@@ -24,16 +25,14 @@ export default function Slider(props) {
         >
       <div className="relative flex-grow overflow-x-hidden w-full h-full rounded-xl" id="slides">
         
-      {props.slides.map((slide, index) => {
-          return <Slide slide={slide} key={index} active={index === slideToDisplay} />
+      {props.slides.map((slide: SlideObject, index: number) => {
+          return <Slide slide={slide} key={index} active={index === slideToDisplay} index={index} />
         })}
       </div>
       <div className="relative -bottom-12 text-white" id="slide-nav">
-        {props.slides.map((slide, index) => {
-            return (
-              <span className={`hidden lg:block mx-2 w-4 h-4 inline-block border border-white rounded-full duration-200 transition-color cursor-pointer ${slideToDisplay === index ? 'bg-white' : ''}`} onClick={() => setSlideToDisplay(index)} key={index}> </span>
-            )
-          })}        
+        {props.slides.map((slide: SlideObject, index: number) => (
+            <span className={`hidden lg:block mx-2 w-4 h-4 border border-white rounded-full duration-200 transition-color cursor-pointer ${slideToDisplay === index ? 'bg-white' : ''}`} onClick={() => setSlideToDisplay(index)} key={index}> </span>
+          ))}        
       </div>
     </section>
   )

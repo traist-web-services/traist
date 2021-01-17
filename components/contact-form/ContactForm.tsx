@@ -14,7 +14,7 @@ export default function ContactForm() {
           <input id="email" name="email" type="email" className={inputRingStyles} required />
           <label htmlFor="message" className="my-2">Message</label>
           <textarea id="message" name="message" className={inputRingStyles} required></textarea>
-          <Button>Send us a message!</Button>
+          <Button href={null}>Send us a message!</Button>
         </form>
     </section>
   )

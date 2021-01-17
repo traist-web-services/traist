@@ -15,6 +15,7 @@ import Hero from '../components/hero/Hero';
 import Slider from '../components/slider/Slider';
 import Contact from '../components/contact-form/ContactForm';
 import Footer from '../components/layout/Footer';
+import DataContext from '../contexts/DataContext';
 
 export default function Home({ file }) {
   const cms = useCMS();
@@ -69,13 +70,15 @@ export default function Home({ file }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <InlineForm form={form}>
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <Hero data={data} />
-        </div>
-        <Slider slides={data.slides} />
-        <Contact />
-        <Footer />
+        <DataContext.Provider value={data}>
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <Hero />
+          </div>
+          <Slider slides={data.slides} />
+          <Contact />
+          <Footer />
+        </DataContext.Provider>
       </InlineForm>
     </Layout>
   )
