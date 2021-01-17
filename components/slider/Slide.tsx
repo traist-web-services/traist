@@ -33,7 +33,7 @@ export default function Slide({ active, slide, index }: Slide) {
                 {text}
               </ReactMarkdown>
             </div>
-            <Button size="lg" href={linkTo}>Find out more</Button>
+            <Button size="lg" href={linkTo} type="link">Find out more</Button>
           </div>
         </div>
       </div>

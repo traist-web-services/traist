@@ -45,8 +45,7 @@ export default function Button({ colour = 'primary', size = 'md', type = 'submit
         <Link
           href={href}
           {...rest}
-        >
-          {children}
+        >{children}
         </Link>
       </span>
     )

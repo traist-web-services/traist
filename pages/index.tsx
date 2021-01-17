@@ -3,13 +3,14 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head'
 
 // Tina imports
-import { useCMS, usePlugin } from 'tinacms';
+import { usePlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
 import { InlineForm } from 'react-tinacms-inline';
 
 // Other libraries
 import matter from 'gray-matter';
+import fs from 'fs';
 
 // My components
 import Layout from '../components/layout/Layout';
@@ -21,13 +22,14 @@ import Footer from '../components/layout/Footer';
 import DataContext from '../contexts/DataContext';
 
 export default function Home({ file, allServices }) {
-  const slides = allServices.map(service => {
+  const slides = allServices ? allServices.map(service => {
     return {
       text: service.frontmatter.excerpt.replaceAll('\\n', "\n"),
       image: service.frontmatter.image,
-      title: service.frontmatter.title
+      title: service.frontmatter.title,
+      linkTo: `/services/${service.slug}`
     }
-  })
+  }) : [];
 
   const [data, form] = useGithubJsonForm(file)
   usePlugin(form)
@@ -55,34 +57,35 @@ export default function Home({ file, allServices }) {
 
 export const getStaticProps: GetStaticProps = async function ({ preview, previewData }) {
 
-  const services = (context => {
-    const keys = context.keys()
-    const values = keys.map(context)
-    const data = keys.map((key, index) => {
-      // Create slug from filename
-      const slug = key
-        .replace(/^.*[\\\/]/, '')
-        .split('.')
-        .slice(0, -1)
-        .join('.')
-      const value = values[index]
-      // Parse yaml metadata & markdownbody in document
-      const document = matter(value.default)
-      return {
-        frontmatter: document.data,
-        slug
-      }
-    })
-    return data
-  })(require.context('../content/services', true, /\.md$/))
+  const servicesDirectory = 'content/services';
+  const services = fs.readdirSync(servicesDirectory);
+  const serviceData = services.map(async file => {
+    const fileData = await import(`../content/services/${file}`)
+    const { data, content } = matter(fileData.default)
+    return {
+      slug: file.split('.')[0],
+      frontmatter: data,
+      body: content
+    }
+  })
+
+  const settledPromises = await Promise.all(serviceData)
 
   if (preview) {
-    return getGithubPreviewProps({
+    const githubPreviewProps = await getGithubPreviewProps({
       ...previewData,
-      allServices: services,
       fileRelativePath: 'content/home.json',
       parse: parseJson
     })
+
+    const returnObj = {
+      props: {
+        allServices: settledPromises,
+        ...githubPreviewProps.props
+      }
+    }
+    console.log(githubPreviewProps)
+    return returnObj;
   }
 
   return {
@@ -90,7 +93,7 @@ export const getStaticProps: GetStaticProps = async function ({ preview, preview
       sourceProvider: null,
       error: null,
       preview: false,
-      allServices: services,
+      allServices: settledPromises,
       file: {
         fileRelativePath: 'content/home.json',
         data: (await import('../content/home.json')).default

@@ -1,21 +1,4 @@
 {
   "title": "Your business.\nOur solutions.",
-  "subtitle": "Need a partner to help you make the most of web technologies?\n\nTraist specialises in building bespoke solutions to maximise value across your business.",
-  "slides": [
-    {
-      "text": "Whether you need a brand new website to boost your brand, or a custom web app to 10x your business, Traist can help.\n\nWe offer bespoke solutions which focus on maximising your ROI and delivering the highest possible value and 'bang for your buck'.\n\nUsing state-of-the-art web technologies, and tried and trusted libraries, security, privacy, and usability come front and centre, whatever we build for you.",
-      "image": "/images/code.jpg",
-      "title": "We create"
-    },
-    {
-      "text": "Maybe you've already got a website or an application you paid a lot of money for, but you're struggling to get it out there for your end users.\n\nIt's no good having a site that no-one sees or an app no-one uses. We can make sure that your app is made available to your users (or customers) with deluxe, private cloud, high availability hosting for high traffic or high criticality applications, or more cost-effective shared cloud solutions for those smaller tools you need to keep up for as few cents as possible.",
-      "image": "/images/containers.jpg",
-      "title": "We manage"
-    },
-    {
-      "text": "Need help making data-driven decisions? Traist can help. We can provide tools and techniques for you and your teams to make decisions, and advise and consult along the way.\n\nOr maybe you're looking to trim excess fat on bloated business processes, utilising your existing infrastructure and tools. We'll help streamline your ways of working, and bring your team along for the ride.",
-      "image": "/images/code.jpg",
-      "title": "We consult"
-    }
-  ]
+  "subtitle": "Need a partner to help you make the most of web technologies?\n\nTraist specialises in building bespoke solutions to maximise value across your business."
 }

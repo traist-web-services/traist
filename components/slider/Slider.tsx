@@ -29,7 +29,7 @@ export default function Slider(props) {
           return <Slide slide={slide} key={index} active={index === slideToDisplay} index={index} />
         })}
       </div>
-      <div className="relative -bottom-12 text-white" id="slide-nav">
+      <div className="relative flex -bottom-12 text-white" id="slide-nav">
         {props.slides.map((slide: SlideObject, index: number) => (
             <span className={`hidden lg:block mx-2 w-4 h-4 border border-white rounded-full duration-200 transition-color cursor-pointer ${slideToDisplay === index ? 'bg-white' : ''}`} onClick={() => setSlideToDisplay(index)} key={index}> </span>
           ))}        

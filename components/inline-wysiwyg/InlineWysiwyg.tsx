@@ -10,9 +10,7 @@ interface Props {
 
 export function InlineWysiwyg(props:Props) {
   const cms = useCMS()
-  const [{ InlineWysiwyg }, setEditor]:[any, any] = useState({
-    InlineWysiwyg: null
-  })
+  const [{ InlineWysiwyg }, setEditor]:[any, any] = useState({})
 
   useEffect(() => {
     if (!InlineWysiwyg && cms.enabled) {
@@ -22,7 +20,7 @@ export function InlineWysiwyg(props:Props) {
 
   if (InlineWysiwyg) {
     return (
-      <InlineWysiwyg sticky={props.sticky ? props.sticky : 'var(--tina-toolbar-height)'} {...props}/>
+      <InlineWysiwyg sticky={props.sticky ?? 'var(--tina-toolbar-height)'} {...props}/>
     )
   }
 
