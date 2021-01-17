@@ -2,17 +2,15 @@
 title: We Manage
 image: /images/containers.jpg
 excerpt: >-
-  Whether you need a brand new website to boost your brand, or a custom web app
-  to 10x your business, Traist can help.
+  Maybe you've already got a website or an application you paid a lot of money
+  for, but you're struggling to get it out there for your end users.
 
 
-  We offer bespoke solutions which focus on maximising your ROI and delivering
-  the highest possible value and 'bang for your buck'
-
-
-  Using state-of-the-art web technologies, and tried and trusted libraries,
-  security, privacy, and usability come front and centre, whatever we build for
-  you.
+  It's no good having a site that no-one sees or an app no-one uses. We can make
+  sure that your app is made available to your users (or customers) with deluxe,
+  private cloud, high availability hosting for high traffic or high criticality
+  applications, or more cost-effective shared cloud solutions for those smaller
+  tools you need to keep up for as few cents as possible.
 ---
 We use a blend of tried and tested web technologies and cutting edge innovations to deliver highly performance and stable solutions for your business. We focus on building robust, usable interfaces, with backend security and data privacy baked in.
 
