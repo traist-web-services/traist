@@ -1,10 +1,6 @@
-import Head from 'next/head'
+import Head from "next/head";
 
-export default function Layout({
-  children
-}: {
-  children: React.ReactNode
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex flex-col leading-relaxed relative">
       <Head>
@@ -14,5 +10,5 @@ export default function Layout({
         {children}
       </main>
     </div>
-  )
+  );
 }

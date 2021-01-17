@@ -1,14 +1,14 @@
-import Image from 'next/image';
-import Button from '../button/Button';
-import ReactMarkdown from 'react-markdown';
+import Image from "next/image";
+import Button from "../button/Button";
+import ReactMarkdown from "react-markdown";
 
-import { useContext } from 'react';
-import { InlineTextarea } from 'react-tinacms-inline';
-import { InlineWysiwyg } from '../inline-wysiwyg/InlineWysiwyg';
-import DataContext from '../../contexts/DataContext';
+import { useContext } from "react";
+import { InlineTextarea } from "react-tinacms-inline";
+import { InlineWysiwyg } from "../inline-wysiwyg/InlineWysiwyg";
+import DataContext from "../../contexts/DataContext";
 
 export default function Hero() {
-  const { subtitle }: { subtitle?:string } = useContext(DataContext);
+  const { subtitle }: { subtitle?: string } = useContext(DataContext);
   return (
     <section className="px-4 md:px-12 lg:px-24 z-0 flex flex-col flex-grow justify-center overflow-hidden relative bg-gradient-to-br from-brand-50 via-brand-200 to-brand-300">
       <div className="hidden lg:block w-1/3 absolute right-0 bottom-2 aspect-h-1 aspect-w-6">
@@ -28,8 +28,10 @@ export default function Hero() {
         </InlineWysiwyg>
       </div>
       <p className="py-5 text-3xl">
-          <Button type="link" href="/learn-more" colour="secondary" size="lg">Learn More</Button>
-        </p>
+        <Button type="link" href="/learn-more" colour="secondary" size="lg">
+          Learn More
+        </Button>
+      </p>
     </section>
-  )
+  );
 }
