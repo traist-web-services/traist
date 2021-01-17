@@ -2,17 +2,14 @@
 title: We Consult
 image: /images/analytics.jpg
 excerpt: >-
-  Whether you need a brand new website to boost your brand, or a custom web app
-  to 10x your business, Traist can help.
+  Need help making data-driven decisions? Traist can help. We can provide tools
+  and techniques for you and your teams to make decisions, and advise and
+  consult along the way.
 
 
-  We offer bespoke solutions which focus on maximising your ROI and delivering
-  the highest possible value and 'bang for your buck'.
-
-
-  Using state-of-the-art web technologies, and tried and trusted libraries,
-  security, privacy, and usability come front and centre, whatever we build for
-  you.
+  Or maybe you're looking to trim excess fat on bloated business processes,
+  utilising your existing infrastructure and tools. We'll help streamline your
+  ways of working, and bring your team along for the ride.
 ---
 We use a blend of tried and tested web technologies and cutting edge innovations to deliver highly performance and stable solutions for your business. We focus on building robust, usable interfaces, with backend security and data privacy baked in.
 
