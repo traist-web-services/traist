@@ -1,7 +1,13 @@
 ---
-title: We Create
+title: We Test
 image: /images/code.jpg
-excerpt: Whether you need a brand new website to boost your brand, or a custom web app to 10x your business, Traist can help.\n\nWe offer bespoke solutions which focus on maximising your ROI and delivering the highest possible value and 'bang for your buck'.\n\nUsing state-of-the-art web technologies, and tried and trusted libraries, security, privacy, and usability come front and centre, whatever we build for you.
+excerpt: >-
+  Whether you need a brand new website to boost your brand, or a custom web app
+  to 10x your business, Traist can help.\n\nWe offer bespoke solutions which
+  focus on maximising your ROI and delivering the highest possible value and
+  'bang for your buck'.\n\nUsing state-of-the-art web technologies, and tried
+  and trusted libraries, security, privacy, and usability come front and centre,
+  whatever we build for you.
 ---
 We use a blend of tried and tested web technologies and cutting edge innovations to deliver highly performance and stable solutions for your business. We focus on building robust, usable interfaces, with backend security and data privacy baked in.
 
