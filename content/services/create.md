@@ -11,7 +11,7 @@ excerpt: >-
 ---
 We use a blend of tried and tested web technologies and cutting edge innovations to deliver highly performance and stable solutions for your business. We focus on building robust, usable interfaces, with backend security and data privacy baked in.
 
-**What's your use case?**
+What's your use case?
 
 ## Brochure Website
 
