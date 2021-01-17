@@ -52,9 +52,6 @@ function MyApp({ Component, pageProps }) {
       github: githubClient,
     },
     media: mediaStore,
-    sidebar: {
-      position: "displace",
-    },
   };
 
   const cms = useMemo(() => new TinaCMS(tinaConfig), []);

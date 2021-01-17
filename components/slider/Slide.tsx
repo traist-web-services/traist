@@ -29,7 +29,7 @@ export default function Slide({ active, slide, index }: Slide) {
           <div className="flex flex-col justify-center h-full">
             <h2 className="text-5xl font-bold mb-4">{title}</h2>
             <div className="prose prose-sm lg:prose-lg xl:prose-xl max-w-prose">
-              <ReactMarkdown parserOptions={{ commonmark: true }}>
+              <ReactMarkdown>
                 {text}
               </ReactMarkdown>
             </div>
@@ -45,7 +45,7 @@ export default function Slide({ active, slide, index }: Slide) {
         <div className="w-full p-2 md:p-8">
           <h2 className="text-2xl font-bold mb-2">{title}</h2>
           <div className="prose prose-md md:prose-xl">
-            <ReactMarkdown parserOptions={{ commonmark: true }}>
+            <ReactMarkdown>
               {text}
             </ReactMarkdown>
           </div>

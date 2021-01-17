@@ -66,7 +66,7 @@ export default function ServiceTemplate(props) {
               uploadDir={() => '/public/images'} 
               alt={`Illustration for the ${data.frontmatter.title} service.`}
               >
-              {props => <Image src={props.src} alt={props.alt} layout="fill" objectFit="cover" />}
+              {props => <Image src={props.src} layout="fill" objectFit="cover" />}
             </InlineImage>
           </div>
           <div className="relative flex items-center -top-16">
