@@ -20,6 +20,7 @@ export default function Footer() {
         <ul>
           {menu[key].map(el =>
             <li className="ml-2 underline"><Link href={el.linkTo}>{el.name}</Link></li>
+        
           )}
         </ul>;
       return (
