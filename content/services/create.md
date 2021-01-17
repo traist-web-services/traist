@@ -11,11 +11,11 @@ excerpt: >-
 ---
 We use a blend of tried and tested web technologies and cutting edge innovations to deliver highly performance and stable solutions for your business. We focus on building robust, usable interfaces, with backend security and data privacy baked in.
 
-What's your use case?
+**What's your use case?**
 
 ## Brochure Website
 
-You've got a new product or service on the market, and you need to make sure that you've got an online presence to back it up. Traist will build you an *attractive, informative, and understandable* design, which you can quickly and easily load your copy and images into without coding knowledge. We operate on a 'mobile first' principle, meaning that your users can expect an outstanding experience, whichever device they're using.
+You've got a new product or service on the market, and you need to make sure that you've got an online presence to back it up. Traist will build you an _attractive, informative, and understandable_ design, which you can quickly and easily load your copy and images into without coding knowledge. We operate on a 'mobile first' principle, meaning that your users can expect an outstanding experience, whichever device they're using.
 
 ## Simple Site
 
