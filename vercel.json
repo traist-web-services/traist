@@ -1,9 +1,9 @@
 {
   "functions": {
-    "index.js": {
+    "index.tsx": {
       "includeFiles": "content/**"
     },
-    "services/[slug].js": {
+    "services/[slug].tsx": {
       "includeFiles": "content/**"
     }
   }
