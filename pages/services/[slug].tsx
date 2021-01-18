@@ -24,6 +24,8 @@ import Footer from "../../components/layout/Footer";
 import Header from "../../components/layout/Header";
 import InlineWysiwyg from "../../components/inline-wysiwyg/InlineWysiwyg";
 import styles from "./[slug].module.scss";
+import getSlugs from "../../utils/getSlugs";
+import getFileNameFromSlug from "../../utils/getFileNameFromSlug";
 
 interface Props {
   file: File;
@@ -109,14 +111,18 @@ export const getStaticProps: GetStaticProps = async function ({
   ...ctx
 }) {
   const { slug } = ctx.params;
-  const content = await import(`../../content/services/${slug}.md`);
+  const fileName = await getFileNameFromSlug({
+    directory: "content/services",
+    slug: slug,
+  });
+  const content = await import(`../../content/services/${fileName}`);
   // const config = await import(`../../data/config.json`)
   const data = matter(content.default);
 
   if (preview) {
     const githubPreviewProps = getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: `content/services/${slug}.md`,
+      fileRelativePath: `content/services/${fileName}`,
       parse: parseMarkdown,
     });
     return githubPreviewProps;
@@ -126,7 +132,7 @@ export const getStaticProps: GetStaticProps = async function ({
     props: {
       siteTitle: "Traist",
       file: {
-        fileRelativePath: `content/services/${slug}.md`,
+        fileRelativePath: `content/services/${fileName}`,
         data: {
           frontmatter: data.data,
           markdownBody: data.content,
@@ -138,16 +144,10 @@ export const getStaticProps: GetStaticProps = async function ({
 };
 
 export async function getStaticPaths() {
-  const servicesDirectory = "content/services";
-  const services = fs.readdirSync(servicesDirectory);
-  const serviceSlugs = services.map((file) => file.split(".")[0].trim());
-
-  const paths = serviceSlugs.map((slug) => `/services/${slug}`);
-
-  return {
-    paths,
-    fallback: false,
-  };
+  return getSlugs({
+    directory: "content/services",
+    mountPath: "services",
+  });
 }
 
 export default ServiceTemplate;

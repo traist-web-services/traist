@@ -11,9 +11,8 @@ import {
 } from "react-tinacms-github";
 import { InlineForm } from "react-tinacms-inline";
 
-// Other libraries
-import matter from "gray-matter";
-import fs from "fs";
+// Utils
+import getServices from "../utils/getServices";
 
 // My components
 import Layout from "../components/layout/Layout";
@@ -86,20 +85,6 @@ export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
-  const servicesDirectory = "content/services";
-  const services = fs.readdirSync(servicesDirectory);
-  const serviceData = services.map(async (file) => {
-    const fileData = await import(`../content/services/${file}`);
-    const { data, content } = matter(fileData.default);
-    return {
-      slug: file.split(".")[0],
-      frontmatter: data,
-      body: content,
-    };
-  });
-
-  const settledPromises = await Promise.all(serviceData);
-
   if (preview) {
     const githubPreviewProps = await getGithubPreviewProps({
       ...previewData,
@@ -109,7 +94,7 @@ export const getStaticProps: GetStaticProps = async function ({
 
     const returnObj = {
       props: {
-        allServices: settledPromises,
+        allServices: await getServices(),
         ...githubPreviewProps.props,
       },
     };
@@ -121,7 +106,7 @@ export const getStaticProps: GetStaticProps = async function ({
       sourceProvider: null,
       error: null,
       preview: false,
-      allServices: settledPromises,
+      allServices: await getServices(),
       file: {
         fileRelativePath: "content/home.json",
         data: (await import("../content/home.json")).default,
