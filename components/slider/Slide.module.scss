@@ -1,0 +1,30 @@
+.slide {
+  @apply flex flex-col lg:flex-row lg:absolute lg:left-full lg:top-0 bg-white flex-grow w-full my-4 lg:my-0 lg:min-h-full shadow-md lg:transform z-10 lg:duration-1000 rounded-xl overflow-hidden max-h-full;
+  &__display {
+    @apply lg:-translate-x-full;
+  }
+}
+
+.image {
+  @apply relative w-full lg:w-1/2;
+  padding-bottom: 75%;
+  @media (min-width: 1024px) {
+    padding-bottom: 0%;
+  }
+}
+
+.text {
+  @apply relative w-full lg:w-1/2 p-8;
+}
+
+.textContainer {
+  @apply flex flex-col justify-center h-full;
+}
+
+.title {
+  @apply mb-4 text-5xl font-bold;
+}
+
+.textProse {
+  @apply prose prose-sm lg:prose xl:prose-lg 2xl:prose-xl max-w-prose;
+}

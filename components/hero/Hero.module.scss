@@ -1,0 +1,28 @@
+.heroSection {
+  @apply relative z-0 flex flex-col justify-center flex-grow px-4 overflow-hidden md:px-12 lg:px-24;
+}
+
+.mountainContainer {
+  @apply absolute right-0 w-full h-full bg-cover z-0;
+}
+
+.colourOverlay {
+  @apply absolute right-0 w-full h-full bg-brand-300 bg-cover z-10;
+  mix-blend-mode: screen;
+}
+
+.heroContent {
+  @apply relative z-30;
+}
+
+.title {
+  @apply py-3 text-6xl font-bold lg:text-9xl;
+}
+
+.subtitle {
+  @apply max-w-3xl text-xl prose text-brand-600 md:text-2xl lg:text-3xl;
+}
+
+.cta {
+  @apply py-5 text-3xl;
+}

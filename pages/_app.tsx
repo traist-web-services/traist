@@ -1,6 +1,6 @@
 import type { AppProps /*, AppContext */ } from "next/app";
-import path from 'path';
-path.resolve('./content'); // Let's tell Next that we need the content folder
+import path from "path";
+path.resolve("./content"); // Let's tell Next that we need the content folder
 
 import "../styles/globals.css";
 import { TinaCMS, TinaProvider, ModalProvider } from "tinacms";
@@ -8,6 +8,7 @@ import { useMemo } from "react";
 import { GithubClient } from "react-tinacms-github";
 import { NextGithubMediaStore } from "next-tinacms-github";
 import { TinacmsGithubProvider } from "react-tinacms-github";
+import Head from "next/head";
 
 const clientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
 const baseRepoFullName = process.env.NEXT_PUBLIC_REPO_FULL_NAME;
@@ -45,7 +46,7 @@ const exitEditMode = async () => {
   });
 };
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   const tinaConfig = {
     enabled: pageProps.preview,
     toolbar: pageProps.preview,
@@ -66,11 +67,14 @@ function MyApp({ Component, pageProps }) {
         error={pageProps.error}
       >
         <ModalProvider>
+          <Head>
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
           <Component {...pageProps} />
         </ModalProvider>
       </TinacmsGithubProvider>
     </TinaProvider>
   );
-}
+};
 
 export default MyApp;

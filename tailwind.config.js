@@ -4,7 +4,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   purge: {
     enabled: process.env.NODE_ENV === "production",
-    content: ["./**/*.html", "./**/*.js", './**/*.ts*'],
+    content: ["./**/*.html", "./**/*.js", "./**/*.ts*", "./**/*.scss"],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -77,7 +77,11 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      pointerEvents: ["active"],
+      cursor: ["active"],
+      aspectRatio: ["responsive"],
+    },
   },
   plugins: [
     require("@tailwindcss/typography"),

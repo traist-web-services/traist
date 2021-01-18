@@ -1,0 +1,7 @@
+.outerContainer {
+  @apply flex flex-col leading-relaxed relative;
+}
+
+.innerContainer {
+  @apply flex flex-col justify-center flex-grow overflow-x-hidden font-sans text-brand-800;
+}

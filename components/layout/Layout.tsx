@@ -1,14 +1,18 @@
 import Head from "next/head";
+import styles from "./Layout.module.scss";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode;
+}
+const Layout = ({ children }: Props) => {
   return (
-    <div className="flex flex-col leading-relaxed relative">
+    <div className={styles.outerContainer}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="font-sans flex flex-col flex-grow justify-center overflow-x-hidden text-brand-800">
-        {children}
-      </main>
+      <main className={styles.innerContainer}>{children}</main>
     </div>
   );
-}
+};
+
+export default Layout;

@@ -1,4 +1,4 @@
-export default function Menu() {
+const Menu = () => {
   return (
     <svg
       className="w-6 h-6"
@@ -15,4 +15,6 @@ export default function Menu() {
       />
     </svg>
   );
-}
+};
+
+export default Menu;

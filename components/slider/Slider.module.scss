@@ -1,0 +1,18 @@
+.slidePager {
+  @apply hidden relative lg:flex text-white -bottom-12;
+}
+
+.sliderSection {
+  @apply relative flex flex-col items-center min-h-screen p-4 bg-brand-500 md:p-12 lg:p-24;
+}
+
+.slideContainer {
+  @apply relative flex-grow w-full h-full overflow-x-hidden rounded-xl;
+}
+
+.slidePagerItem {
+  @apply mx-2 w-4 h-4 border border-white rounded-full duration-200 transition-colors cursor-pointer;
+  &__active {
+    @apply bg-white;
+  }
+}

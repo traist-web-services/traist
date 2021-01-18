@@ -1,0 +1,22 @@
+.footer {
+  @apply flex flex-col flex-grow-0 p-4 text-white lowercase lg:flex-row md:p-12 lg:p-24 bg-brand-900;
+}
+
+.footerCol {
+  @apply w-full px-8 my-4 lg:w-1/3 lg:border-r border-brand-200 lg:my-0;
+  &__noBorder {
+    @apply border-0;
+  }
+}
+
+.footerTitle {
+  @apply text-xl lg:text-2xl;
+}
+
+.contactLink {
+  @apply text-lg underline lg:text-xl;
+}
+
+.lowercaseText {
+  @apply lowercase;
+}

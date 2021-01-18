@@ -8,7 +8,7 @@ interface Props {
   format: "markdown" | "html";
 }
 
-export function InlineWysiwyg(props: Props) {
+const InlineWysiwyg = (props: Props) => {
   const cms = useCMS();
   const [{ InlineWysiwyg }, setEditor]: [any, any] = useState({});
 
@@ -28,4 +28,6 @@ export function InlineWysiwyg(props: Props) {
   }
 
   return props.children;
-}
+};
+
+export default InlineWysiwyg;

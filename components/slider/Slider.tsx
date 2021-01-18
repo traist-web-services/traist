@@ -1,7 +1,11 @@
 import { useState, useEffect, ReactChild } from "react";
 import Slide, { SlideObject } from "./Slide";
+import styles from "./Slider.module.scss";
 
-export default function Slider(props) {
+interface Props {
+  slides: SlideObject[];
+}
+const Slider = ({ slides }: Props) => {
   const [slideToDisplay, setSlideToDisplay] = useState(0);
   const [timerPaused, setTimerPaused] = useState(false);
 
@@ -9,7 +13,7 @@ export default function Slider(props) {
     const interval = setInterval(() => {
       if (!timerPaused) {
         const nextSlide =
-          slideToDisplay + 1 > props.slides.length - 1 ? 0 : slideToDisplay + 1;
+          slideToDisplay + 1 > slides.length - 1 ? 0 : slideToDisplay + 1;
         setSlideToDisplay(nextSlide);
       }
     }, 20000);
@@ -18,15 +22,12 @@ export default function Slider(props) {
 
   return (
     <section
-      className="relative min-h-screen bg-brand-500 p-4 md:p-12 lg:p-24 flex flex-col items-center"
+      className={styles.sliderSection}
       onMouseOver={() => setTimerPaused(true)}
       onMouseOut={() => setTimerPaused(false)}
     >
-      <div
-        className="relative flex-grow overflow-x-hidden w-full h-full rounded-xl"
-        id="slides"
-      >
-        {props.slides.map((slide: SlideObject, index: number) => {
+      <div className={styles.slideContainer}>
+        {slides.map((slide, index) => {
           return (
             <Slide
               slide={slide}
@@ -37,11 +38,11 @@ export default function Slider(props) {
           );
         })}
       </div>
-      <div className="relative flex -bottom-12 text-white" id="slide-nav">
-        {props.slides.map((slide: SlideObject, index: number) => (
+      <div className={`${styles.slidePager}`}>
+        {slides.map((slide, index) => (
           <span
-            className={`hidden lg:block mx-2 w-4 h-4 border border-white rounded-full duration-200 transition-color cursor-pointer ${
-              slideToDisplay === index ? "bg-white" : ""
+            className={`${styles.slidePagerItem} ${
+              slideToDisplay === index ? styles.slidePagerItem__active : ""
             }`}
             onClick={() => setSlideToDisplay(index)}
             key={index}
@@ -52,4 +53,6 @@ export default function Slider(props) {
       </div>
     </section>
   );
-}
+};
+
+export default Slider;

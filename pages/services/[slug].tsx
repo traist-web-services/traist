@@ -22,9 +22,20 @@ import Layout from "../../components/layout/Layout";
 import DataContext from "../../contexts/DataContext";
 import Footer from "../../components/layout/Footer";
 import Header from "../../components/layout/Header";
-import { InlineWysiwyg } from "../../components/inline-wysiwyg/InlineWysiwyg";
+import InlineWysiwyg from "../../components/inline-wysiwyg/InlineWysiwyg";
+import styles from "./[slug].module.scss";
 
-export default function ServiceTemplate(props) {
+interface Props {
+  file: File;
+}
+
+interface File {
+  fileRelativePath: string;
+  data: string;
+  sha: string;
+}
+
+const ServiceTemplate = ({ file }: Props) => {
   const cms = useCMS();
   if (cms.enabled) {
     import("react-tinacms-editor").then(({ MarkdownFieldPlugin }) => {
@@ -48,7 +59,7 @@ export default function ServiceTemplate(props) {
       },
     ],
   };
-  const [data, form] = useGithubMarkdownForm(props.file, formOptions);
+  const [data, form] = useGithubMarkdownForm(file, formOptions);
   usePlugin(form);
   useGithubToolbarPlugins();
   return (
@@ -59,7 +70,7 @@ export default function ServiceTemplate(props) {
       <InlineForm form={form}>
         <Header />
         <DataContext.Provider value={data}>
-          <div className="relative h-96 w-full">
+          <div className={styles.imageContainer}>
             <InlineImage
               name="frontmatter.image"
               parse={(media) => `/images/${media.filename}`}
@@ -71,13 +82,13 @@ export default function ServiceTemplate(props) {
               )}
             </InlineImage>
           </div>
-          <div className="relative flex items-center -top-16">
-            <div className="bg-white p-16 pt-8 mx-auto rounded-lg">
-              <article className="max-w-prose">
-                <h1 className="text-6xl font-bold mb-4">
+          <div className={styles.contentContainer}>
+            <div className={styles.articleContainer}>
+              <article className={styles.article}>
+                <h1 className={styles.title}>
                   <InlineTextarea name="frontmatter.title" />
                 </h1>
-                <div className="prose lg:prose-lg xl:prose-xl 2xl:prose-2xl">
+                <div className={styles.content}>
                   <InlineWysiwyg name="markdownBody" format="markdown">
                     <ReactMarkdown source={data.markdownBody} />
                   </InlineWysiwyg>
@@ -90,7 +101,7 @@ export default function ServiceTemplate(props) {
       </InlineForm>
     </Layout>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps = async function ({
   preview,
@@ -138,3 +149,5 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+export default ServiceTemplate;

@@ -23,8 +23,31 @@ import Slider from "../components/slider/Slider";
 import Contact from "../components/contact-form/ContactForm";
 import Footer from "../components/layout/Footer";
 import DataContext from "../contexts/DataContext";
+import styles from "./index.module.scss";
 
-export default function Home({ file, allServices }) {
+interface File {
+  fileRelativePath: string;
+  data: string;
+  sha: string;
+}
+
+interface Service {
+  slug: string;
+  frontmatter: Frontmatter;
+  body: string;
+}
+
+interface Frontmatter {
+  excerpt: string;
+  image: string;
+  title: string;
+}
+
+interface Props {
+  file: File;
+  allServices: Service[];
+}
+const Home = ({ file, allServices }: Props) => {
   const slides = allServices
     ? allServices.map((service) => {
         return {
@@ -43,11 +66,10 @@ export default function Home({ file, allServices }) {
     <Layout>
       <Head>
         <title>Traist - Home</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <InlineForm form={form}>
         <DataContext.Provider value={data}>
-          <div className="min-h-screen flex flex-col">
+          <div className={styles.heroContainer}>
             <Header />
             <Hero />
           </div>
@@ -58,7 +80,7 @@ export default function Home({ file, allServices }) {
       </InlineForm>
     </Layout>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps = async function ({
   preview,
@@ -103,8 +125,11 @@ export const getStaticProps: GetStaticProps = async function ({
       file: {
         fileRelativePath: "content/home.json",
         data: (await import("../content/home.json")).default,
+        sha: "",
       },
     },
     revalidate: 3,
   };
 };
+
+export default Home;

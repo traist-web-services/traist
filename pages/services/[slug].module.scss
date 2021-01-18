@@ -1,0 +1,23 @@
+.imageContainer {
+  @apply relative w-full h-96;
+}
+
+.contentContainer {
+  @apply relative flex items-center -top-16 px-4;
+}
+
+.articleContainer {
+  @apply p-8 lg:p-16 pt-4 lg:pt-8 mx-auto bg-white rounded-lg shadow-lg;
+}
+
+.article {
+  @apply max-w-prose;
+}
+
+.title {
+  @apply mb-4 text-6xl font-bold;
+}
+
+.content {
+  @apply prose lg:prose-lg xl:prose-xl 2xl:prose-2xl;
+}
