@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./Button.module.scss";
+import forwardRef from "react";
 
 interface Props {
   colour?: "primary" | "secondary";
@@ -21,11 +22,11 @@ const Button = ({
 }: Props) => {
   if (type === "link") {
     return (
-      <span className={`${styles.button} ${styles[size]} ${styles[colour]}`}>
-        <Link href={href ?? "#"} {...rest}>
+      <Link href={href ?? "#"} {...rest} passHref>
+        <a className={`${styles.button} ${styles[size]} ${styles[colour]}`}>
           {children}
-        </Link>
-      </span>
+        </a>
+      </Link>
     );
   }
   if (type === "submit" || type === "reset") {

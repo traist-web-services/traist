@@ -1,5 +1,5 @@
 .button {
-  @apply self-start mt-4 rounded transition-colors duration-500 hover:text-opacity-90 outline-none active:pointer-events-none active:cursor-wait;
+  @apply self-start mt-4 rounded transition-colors duration-500 hover:text-opacity-90 outline-none;
 }
 
 .primary {
