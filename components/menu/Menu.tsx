@@ -4,7 +4,6 @@ import styles from "./Menu.module.scss";
 import { useState } from "react";
 import ChevronDown from "../icons/ChevronDown";
 import MenuIcon from "../icons/Menu";
-import { Url } from "url";
 
 const menuDefault = {
   services: [

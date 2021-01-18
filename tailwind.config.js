@@ -1,10 +1,11 @@
-const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   purge: {
     enabled: process.env.NODE_ENV === "production",
-    content: ["./**/*.html", "./**/*.js", "./**/*.ts*", "./**/*.scss"],
+    content: [
+      "./{components,pages}/**/*.{js,ts,jsx,tsx}"
+    ],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -80,11 +81,9 @@ module.exports = {
     extend: {
       pointerEvents: ["active"],
       cursor: ["active"],
-      aspectRatio: ["responsive"],
     },
   },
   plugins: [
     require("@tailwindcss/typography"),
-    require("@tailwindcss/aspect-ratio"),
   ],
 };

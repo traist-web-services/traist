@@ -67,9 +67,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         error={pageProps.error}
       >
         <ModalProvider>
-          <Head>
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
           <Component {...pageProps} />
         </ModalProvider>
       </TinacmsGithubProvider>
