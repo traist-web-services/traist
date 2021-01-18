@@ -8,6 +8,8 @@ export default function ContactForm() {
       <form
         className="flex-grow text-xl lg:text-2xl p-12 shadow-md rounded-lg w-full max-w-prose flex flex-col"
         id="contact-form"
+        action="https://formspree.io/f/moqprqlg"
+        method="POST"
       >
         <h1 className="font-bold text-4xl md:text-6xl mb-4 mt-0">
           Get in touch
