@@ -68,16 +68,17 @@ const Menu = ({ menu = menuDefault, simple = false }: Props) => {
 
     return (
       <li className={styles.topLevelItem} key={topLevelItem}>
-        {topLevelItem}
         <span
-          className={`${styles.chevron} ${
-            subMenuToDisplay === index ? styles.chevron__invert : ""
-          }`}
+          onClick={() => {
+            handleClick(index);
+          }}
+          className={styles.tliwrapper}
         >
+          {topLevelItem}
           <span
-            onClick={() => {
-              handleClick(index);
-            }}
+            className={`${styles.chevron} ${
+              subMenuToDisplay === index ? styles.chevron__invert : ""
+            }`}
           >
             <ChevronDown />
           </span>

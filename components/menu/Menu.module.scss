@@ -15,6 +15,10 @@
   @apply relative flex flex-col md:flex-row items-center w-full h-full px-4 mt-4 md:mt-0 text-3xl font-bold md:text-2xl md:font-normal cursor-pointer;
 }
 
+.tliwrapper {
+  @apply flex items-center;
+}
+
 .subMenu {
   @apply overflow-hidden transition-transform transform duration-500 relative md:absolute bg-white border-0 md:border-4 border-brand-500 -mb-4 w-full rounded-b-lg md:border-t-0 md:bottom-0 ml-0 md:-ml-4 flex flex-col;
   &__open {
