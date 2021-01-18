@@ -26,9 +26,9 @@
 }
 
 .desktopMenu {
-  @apply sticky md:relative top-0 left-0 w-screen md:w-full md:h-auto lg:block transition-transform transform origin-top scale-y-0 duration-500;
+  @apply sticky md:relative top-0 left-0 w-screen md:w-full md:h-auto lg:block opacity-0 md:opacity-100 transition-opacity duration-500;
   &__open {
-    @apply h-screen scale-y-100;
+    @apply h-screen opacity-100;
   }
 }
 
