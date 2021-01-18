@@ -44,7 +44,7 @@ const Menu = ({ menu = menuDefault, simple = false }: Props) => {
       <ul>
         {menuKeys.map((key) => {
           return menu[key].map((thisItem) => (
-            <li>
+            <li key={thisItem.name}>
               <Link href={thisItem.linkTo}>{thisItem.name}</Link>
             </li>
           ));
@@ -68,7 +68,7 @@ const Menu = ({ menu = menuDefault, simple = false }: Props) => {
     }
 
     return (
-      <li className={styles.topLevelItem}>
+      <li className={styles.topLevelItem} key={topLevelItem}>
         {topLevelItem}
         <span
           className={`${styles.chevron} ${
