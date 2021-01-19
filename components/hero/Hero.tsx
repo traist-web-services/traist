@@ -19,7 +19,9 @@ const Hero = () => {
           alt=""
           role="presentation"
           layout="fill"
-          preload={true}
+          objectFit="cover"
+          priority={true}
+          quality={40}
         />
         <div className={styles.colourOverlay}></div>
       </div>
