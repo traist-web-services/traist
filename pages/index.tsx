@@ -12,14 +12,14 @@ import {
 import { InlineForm } from "react-tinacms-inline";
 
 // Utils
-import getServices from "../utils/getServices";
+import getContent from "../utils/getContent";
 
 // My components
 import Layout from "../components/layout/Layout";
 import Header from "../components/layout/Header";
 import Hero from "../components/hero/Hero";
 import Slider from "../components/slider/Slider";
-import Contact from "../components/contact-form/ContactForm";
+import ContactForm from "../components/contact-form/ContactForm";
 import Footer from "../components/layout/Footer";
 import DataContext from "../contexts/DataContext";
 import styles from "./index.module.scss";
@@ -73,7 +73,7 @@ const Home = ({ file, allServices }: Props) => {
             <Hero />
           </div>
           <Slider slides={slides} />
-          <Contact />
+          <ContactForm displayChrome={true} />
           <Footer />
         </DataContext.Provider>
       </InlineForm>
@@ -94,7 +94,7 @@ export const getStaticProps: GetStaticProps = async function ({
 
     const returnObj = {
       props: {
-        allServices: await getServices(),
+        allServices: await getContent({ contentType: "services" }),
         ...githubPreviewProps.props,
       },
     };
@@ -106,7 +106,7 @@ export const getStaticProps: GetStaticProps = async function ({
       sourceProvider: null,
       error: null,
       preview: false,
-      allServices: await getServices(),
+      allServices: await getContent({ contentType: "services" }),
       file: {
         fileRelativePath: "content/home.json",
         data: (await import("../content/home.json")).default,

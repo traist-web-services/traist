@@ -1,6 +1,6 @@
 import type { AppProps /*, AppContext */ } from "next/app";
 import path from "path";
-path.resolve("./content"); // Let's tell Next that we need the content folder
+path.resolve("../content"); // Let's tell Next that we need the content folder
 
 import "../styles/globals.css";
 import { TinaCMS, TinaProvider, ModalProvider } from "tinacms";
@@ -8,7 +8,6 @@ import { useMemo } from "react";
 import { GithubClient } from "react-tinacms-github";
 import { NextGithubMediaStore } from "next-tinacms-github";
 import { TinacmsGithubProvider } from "react-tinacms-github";
-import Head from "next/head";
 
 const clientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
 const baseRepoFullName = process.env.NEXT_PUBLIC_REPO_FULL_NAME;

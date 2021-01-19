@@ -10,7 +10,6 @@ const getSlugs = ({ directory, mountPath }: Props) => {
   const slugs = fileList.map((file) => file.split(".")[1].trim());
 
   const paths = slugs.map((slug) => `/${mountPath}/${slug}`);
-
   return {
     paths,
     fallback: false,

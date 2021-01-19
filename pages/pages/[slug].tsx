@@ -36,7 +36,7 @@ interface File {
   sha: string;
 }
 
-const ServiceTemplate = ({ file }: Props) => {
+const PageTemplate = ({ file }: Props) => {
   const cms = useCMS();
   if (cms.enabled) {
     import("react-tinacms-editor").then(({ MarkdownFieldPlugin }) => {
@@ -52,11 +52,6 @@ const ServiceTemplate = ({ file }: Props) => {
         component: "image",
         parse: (media) => `/images/${media.filename}`,
         uploadDir: () => "public/images/",
-      },
-      {
-        name: "frontmatter.excerpt",
-        label: "Excerpt",
-        component: "markdown",
       },
     ],
   };
@@ -76,7 +71,7 @@ const ServiceTemplate = ({ file }: Props) => {
               name="frontmatter.image"
               parse={(media) => `/images/${media.filename}`}
               uploadDir={() => "/public/images"}
-              alt={`Illustration for the ${data.frontmatter.title} service.`}
+              alt={`Illustration for the ${data.frontmatter.title} page.`}
             >
               {(props) => (
                 <Image src={props.src} layout="fill" objectFit="cover" />
@@ -110,19 +105,17 @@ export const getStaticProps: GetStaticProps = async function ({
   ...ctx
 }) {
   const { slug } = ctx.params;
-  const fileName = await getFileNameFromSlug({
-    directory: "content/services",
+  const fileName = getFileNameFromSlug({
+    directory: "content/pages",
     slug: slug,
   });
-
-  const content = await import(`../../content/services/${fileName}`);
+  const content = await import(`../../content/pages/${fileName}`);
   // const config = await import(`../../data/config.json`)
   const data = matter(content.default);
-
   if (preview) {
     const githubPreviewProps = getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: `content/services/${fileName}`,
+      fileRelativePath: `content/pages/${fileName}`,
       parse: parseMarkdown,
     });
     return githubPreviewProps;
@@ -132,7 +125,7 @@ export const getStaticProps: GetStaticProps = async function ({
     props: {
       siteTitle: "Traist",
       file: {
-        fileRelativePath: `content/services/${fileName}`,
+        fileRelativePath: `content/pages/${fileName}`,
         data: {
           frontmatter: data.data,
           markdownBody: data.content,
@@ -145,9 +138,9 @@ export const getStaticProps: GetStaticProps = async function ({
 
 export async function getStaticPaths() {
   return getSlugs({
-    directory: "content/services",
-    mountPath: "services",
+    directory: "content/pages",
+    mountPath: "pages",
   });
 }
 
-export default ServiceTemplate;
+export default PageTemplate;

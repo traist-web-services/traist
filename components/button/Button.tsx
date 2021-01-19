@@ -10,6 +10,7 @@ interface Props {
   children: string | undefined;
   onClick?: () => void;
   rest?: any[];
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -18,6 +19,7 @@ const Button = ({
   type = "submit",
   href,
   children,
+  disabled,
   ...rest
 }: Props) => {
   if (type === "link") {
@@ -33,7 +35,10 @@ const Button = ({
     return (
       <input
         type={type}
-        className={`${styles.button} ${styles[size]} ${styles[colour]}`}
+        disabled={disabled}
+        className={`${styles.button} ${styles[size]} ${styles[colour]} ${
+          disabled ? styles.disabled : ""
+        }`}
         value={children}
       />
     );

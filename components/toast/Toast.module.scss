@@ -1,0 +1,22 @@
+.toastContainer {
+  @apply fixed top-full transform transition-transform duration-200 p-4 flex;
+}
+
+.toastIcon {
+  @apply font-bold;
+}
+
+.toastMessage {
+  @apply ml-2;
+}
+.success {
+  @apply bg-brand-green-400 text-green-800 border-l-4 border-green-800;
+}
+
+.error {
+  @apply bg-brand-red-300 text-red-800 border-l-4 border-red-800;
+}
+
+.display {
+  @apply -translate-y-full -mt-4;
+}

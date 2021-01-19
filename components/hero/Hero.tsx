@@ -32,13 +32,8 @@ const Hero = () => {
           </InlineWysiwyg>
         </div>
         <div className={styles.cta}>
-          <Button
-            type="link"
-            href="/services/create"
-            colour="secondary"
-            size="lg"
-          >
-            Learn More
+          <Button type="link" href="/contact" colour="secondary" size="lg">
+            What are you planning?
           </Button>
         </div>
       </div>

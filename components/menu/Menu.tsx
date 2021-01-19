@@ -6,6 +6,12 @@ import ChevronDown from "../icons/ChevronDown";
 import MenuIcon from "../icons/Menu";
 
 const menuDefault = {
+  about: [
+    {
+      name: "About",
+      linkTo: "/pages/about",
+    },
+  ],
   services: [
     {
       name: "Create",
@@ -18,6 +24,12 @@ const menuDefault = {
     {
       name: "Consult",
       linkTo: "/services/consult",
+    },
+  ],
+  contact: [
+    {
+      name: "Contact",
+      linkTo: "/contact",
     },
   ],
 };

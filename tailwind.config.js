@@ -3,9 +3,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   purge: {
     enabled: process.env.NODE_ENV === "production",
-    content: [
-      "./{components,pages}/**/*.{js,ts,jsx,tsx}"
-    ],
+    content: ["./{components,pages}/**/*.{js,ts,jsx,tsx}"],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -74,6 +72,18 @@ module.exports = {
           800: "#641f2a",
           900: "#511922",
         },
+        gray: {
+          50: "#f3f7fa",
+          100: "#e7eff4",
+          200: "#c2d8e4",
+          300: "#9ec0d3",
+          400: "#5591b2",
+          500: "#0C6291",
+          600: "#0b5883",
+          700: "#094a6d",
+          800: "#073b57",
+          900: "#063047",
+        },
       },
     },
   },
@@ -83,7 +93,5 @@ module.exports = {
       cursor: ["active"],
     },
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };
