@@ -25,7 +25,7 @@ const Slide = ({ active, slide, index }: Props) => {
         className={`${styles.slide} ${active ? styles.slide__display : ""}`}
       >
         <div className={styles.image}>
-          <Image src={image} layout="fill" objectFit="cover" />
+          <Image src={image} alt={title} layout="fill" objectFit="cover" />
         </div>
 
         <div className={styles.text}>

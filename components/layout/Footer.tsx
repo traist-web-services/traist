@@ -20,7 +20,7 @@ const Footer = () => {
         <EditLink className={styles.lowercaseText} />
       </div>
       <div className={`${styles.footerCol} ${styles.footerCol__noBorder}`}>
-        <h5 className={styles.footerTitle}>About</h5>
+        <h1 className={styles.footerTitle}>About</h1>
         <p>
           Traist Web Services is a digital consultancy firm building exceptional
           user experiences for small to medium businesses.
