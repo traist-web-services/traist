@@ -19,6 +19,7 @@ const Hero = () => {
           alt=""
           role="presentation"
           layout="fill"
+          preload={true}
         />
         <div className={styles.colourOverlay}></div>
       </div>
