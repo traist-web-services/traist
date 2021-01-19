@@ -15,7 +15,7 @@ const Hero = () => {
     <section className={styles.heroSection}>
       <div className={styles.mountainContainer}>
         <Image
-          src="/images/mont-blanc.jpg"
+          src="/images/mountain-bg.jpg"
           alt=""
           role="presentation"
           layout="fill"
