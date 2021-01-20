@@ -93,7 +93,7 @@ const getContent = async (preview, previewData, contentDir) => {
   );
   return content.sort(
     (a: any, b: any) =>
-      b?.data?.frontmatter?.sortOrder - a?.data?.frontmatter?.sortOrder
+      a?.data?.frontmatter?.sortOrder - b?.data?.frontmatter?.sortOrder
   );
 };
 
