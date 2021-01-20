@@ -109,7 +109,8 @@ const getLocalFiles = async (filePath: string) => {
   const directory = path.join(process.cwd(), filePath);
   console.log(directory);
   const fg = require("fast-glob");
-  const files = await fg(`${directory}**/*.md`);
+  const files = await fg(`${directory}/*.md`);
+  console.log(files);
   return files;
 };
 
