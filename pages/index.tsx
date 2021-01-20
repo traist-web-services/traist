@@ -121,7 +121,9 @@ export const getStaticProps: GetStaticProps = async function ({
         sha: "",
       },
     },
-    revalidate: 3,
+    // TODO: Not sure why ISG isn't working.
+    // Don't re-enable the below line, getContent returns empty for some reason.
+    // revalidate: 3
   };
 };
 
