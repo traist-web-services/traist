@@ -35,7 +35,7 @@ const Slide = ({ active, slide, index }: Props) => {
               <ReactMarkdown>{text}</ReactMarkdown>
             </div>
             <Button size="lg" href={linkTo} type="link">
-              Learn More
+              How can we help?
             </Button>
           </div>
         </div>
