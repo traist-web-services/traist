@@ -51,7 +51,7 @@ const Home = ({ file, allServices }: Props) => {
   const slides = allServices
     ? allServices.map((thisService: Service) => {
         const service = thisService.data;
-        const slug = thisService.fileName.split(".")[1];
+        const slug = thisService.fileName.split(".")[0];
         return {
           text: service.frontmatter.excerpt,
           image: service.frontmatter.image,
