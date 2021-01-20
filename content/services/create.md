@@ -1,6 +1,7 @@
 ---
 title: We Create
 image: /images/code.jpg
+sortOrder: 1
 excerpt: >-
   Whether you need a brand new website to boost your brand, or a custom web app
   to 10x your business, Traist can help.

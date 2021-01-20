@@ -1,7 +1,9 @@
 ---
 title: About Us
 image: /images/code.jpg
+sortOrder: 1
 ---
+
 Traist Web Services is a digital consultancy firm building exceptional user experiences for small to medium businesses.
 
 We believe every client is unique and presents unique opportunities, but typically, we recommend React on the front-end, backed by Node on the back end. We love Next.js for ease of use and built in iteration and speed enhancements, as well as their integration with the Vercel platform.

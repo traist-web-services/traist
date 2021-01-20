@@ -24,7 +24,6 @@ import Header from "../../components/layout/Header";
 import InlineWysiwyg from "../../components/inline-wysiwyg/InlineWysiwyg";
 import styles from "./[slug].module.scss";
 import getSlugs from "../../utils/getSlugs";
-import getFileNameFromSlug from "../../utils/getFileNameFromSlug";
 
 interface Props {
   file: File;
@@ -50,7 +49,7 @@ const ServiceTemplate = ({ file }: Props) => {
         name: "frontmatter.image",
         label: "Image",
         component: "image",
-        parse: (media) => `/images/${media.filename}`,
+        parse: (media) => `/images/${media.slug}`,
         uploadDir: () => "public/images/",
       },
       {
@@ -74,7 +73,7 @@ const ServiceTemplate = ({ file }: Props) => {
           <div className={styles.imageContainer}>
             <InlineImage
               name="frontmatter.image"
-              parse={(media) => `/images/${media.filename}`}
+              parse={(media) => `/images/${media.slug}`}
               uploadDir={() => "/public/images"}
               alt={`Illustration for the ${data.frontmatter.title} service.`}
             >
@@ -110,21 +109,24 @@ export const getStaticProps: GetStaticProps = async function ({
   ...ctx
 }) {
   const { slug } = ctx.params;
-  const fileName = await getFileNameFromSlug({
-    directory: "content/services",
-    slug: slug,
-  });
+  const fileRelativePath = `content/services/${slug}.md`;
 
   if (preview) {
-    const githubPreviewProps = getGithubPreviewProps({
+    const previewProps = await getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: `content/services/${fileName}`,
+      fileRelativePath,
       parse: parseMarkdown,
     });
-    return githubPreviewProps;
+
+    return {
+      props: {
+        previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
+        ...previewProps.props,
+      },
+    };
   }
 
-  const content = await import(`../../content/services/${fileName}`);
+  const content = await import(`../../content/services/${slug}.md`);
   // const config = await import(`../../data/config.json`)
   const data = matter(content.default);
 
@@ -132,7 +134,7 @@ export const getStaticProps: GetStaticProps = async function ({
     props: {
       siteTitle: "Traist",
       file: {
-        fileRelativePath: `content/services/${fileName}`,
+        fileRelativePath,
         data: {
           frontmatter: data.data,
           markdownBody: data.content,

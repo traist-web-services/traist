@@ -7,7 +7,7 @@ interface Props {
 
 const getSlugs = ({ directory, mountPath }: Props) => {
   const fileList = fs.readdirSync(directory);
-  const slugs = fileList.map((file) => file.split(".")[1].trim());
+  const slugs = fileList.map((file) => file.split(".")[0].trim());
 
   const paths = slugs.map((slug) => `/${mountPath}/${slug}`);
   return {

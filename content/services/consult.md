@@ -1,6 +1,7 @@
 ---
 title: We Consult
 image: /images/analytics.jpg
+sortOrder: 3
 excerpt: >-
   Need help making data-driven decisions? Traist can help. We can provide tools
   and techniques for you and your teams to make decisions, and advise and
