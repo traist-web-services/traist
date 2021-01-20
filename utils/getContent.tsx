@@ -83,7 +83,6 @@ const getContent = async (preview, previewData, contentDir) => {
             .split(".")[0],
         };
       }
-      console.log("Read file");
       const content = fs.readFileSync(`${file}`, "utf8");
       const data = matter(content);
       return {
