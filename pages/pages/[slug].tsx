@@ -105,17 +105,15 @@ export const getStaticProps: GetStaticProps = async function ({
   ...ctx
 }) {
   const { slug } = ctx.params;
-  const fileName = getFileNameFromSlug({
-    directory: "content/pages",
-    slug: slug,
-  });
-  const content = await import(`../../content/pages/${fileName}`);
+  const fileRelativePath = `content/pages/${slug}.md`;
+
+  const content = await import(`../../content/pages/${slug}.md`);
   // const config = await import(`../../data/config.json`)
   const data = matter(content.default);
   if (preview) {
     const githubPreviewProps = getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: `content/pages/${fileName}`,
+      fileRelativePath,
       parse: parseMarkdown,
     });
     return githubPreviewProps;
@@ -125,7 +123,7 @@ export const getStaticProps: GetStaticProps = async function ({
     props: {
       siteTitle: "Traist",
       file: {
-        fileRelativePath: `content/pages/${fileName}`,
+        fileRelativePath,
         data: {
           frontmatter: data.data,
           markdownBody: data.content,
