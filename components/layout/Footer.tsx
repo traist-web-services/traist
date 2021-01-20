@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerCol}>
-        <h5 className={styles.footerTitle}>Traist Web Services &copy; 2021</h5>
+        <h1 className={styles.footerTitle}>Traist Web Services &copy; 2021</h1>
         <p>
           <a href="mailto:hi@traist.co.uk" className={styles.contactLink}>
             hi@traist.co.uk
@@ -15,7 +15,7 @@ const Footer = () => {
         </p>
       </div>
       <div className={styles.footerCol}>
-        <h5 className={styles.footerTitle}>Pages</h5>
+        <h1 className={styles.footerTitle}>Pages</h1>
         <Menu simple={true} />
         <EditLink className={styles.lowercaseText} />
       </div>
