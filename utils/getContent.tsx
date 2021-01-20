@@ -62,7 +62,7 @@ const getContent = async (preview, previewData, contentDir) => {
         previewData.github_access_token
       )
     : await getLocalFiles(contentDir);
-  const posts = await Promise.all(
+  const content = await Promise.all(
     files.map(async (file) => {
       if (preview) {
         const previewProps = await getGithubPreviewProps({
@@ -91,7 +91,9 @@ const getContent = async (preview, previewData, contentDir) => {
       };
     })
   );
-  return posts;
+  return content.sort((a: any, b: any) => {
+    return a?.data?.frontmatter?.sortOrder > b?.data?.frontmatter?.sortOrder;
+  });
 };
 
 const getLocalFiles = async (filePath) => {
