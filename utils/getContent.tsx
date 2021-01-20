@@ -106,8 +106,10 @@ const getContent = async (preview, previewData, contentDir) => {
 
 const getLocalFiles = async (filePath: string) => {
   // grab all md files
+  const directory = path.join(process.cwd(), filePath);
+  console.log(directory);
   const fg = require("fast-glob");
-  const files = await fg(`${filePath}**/*.md`);
+  const files = await fg(`${directory}**/*.md`);
   return files;
 };
 

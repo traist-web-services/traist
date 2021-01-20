@@ -48,7 +48,6 @@ interface Props {
   allServices: Service[];
 }
 const Home = ({ file, allServices }: Props) => {
-  console.log("All Services", allServices);
   const slides = allServices
     ? allServices.map((thisService: Service) => {
         const service = thisService.data;
@@ -122,7 +121,7 @@ export const getStaticProps: GetStaticProps = async function ({
         sha: "",
       },
     },
-    //revalidate: 3,
+    revalidate: 3,
   };
 };
 
