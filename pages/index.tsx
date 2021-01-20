@@ -89,6 +89,11 @@ export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
+  const allServices = await getContent(
+    preview,
+    previewData,
+    "content/services"
+  );
   if (preview) {
     const githubPreviewProps = await getGithubPreviewProps({
       ...previewData,
@@ -98,7 +103,7 @@ export const getStaticProps: GetStaticProps = async function ({
 
     const returnObj = {
       props: {
-        allServices: await getContent(preview, previewData, "content/services"),
+        allServices,
         ...githubPreviewProps.props,
       },
     };
@@ -110,7 +115,7 @@ export const getStaticProps: GetStaticProps = async function ({
       sourceProvider: null,
       error: null,
       preview: false,
-      allServices: await getContent(preview, previewData, "content/services"),
+      allServices,
       file: {
         fileRelativePath: "content/home.json",
         data: (await import("../content/home.json")).default,
