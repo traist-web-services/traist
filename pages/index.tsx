@@ -68,6 +68,10 @@ const Home = ({ file, allServices }: Props) => {
     <Layout>
       <Head>
         <title>Traist - Home</title>
+        <meta
+          name="description"
+          content="Traist Web Services is a digital consultancy firm building exceptional user experiences for small to medium businesses."
+        />
       </Head>
       <InlineForm form={form}>
         <DataContext.Provider value={data}>

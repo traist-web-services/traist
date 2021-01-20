@@ -62,6 +62,7 @@ const PageTemplate = ({ file }: Props) => {
     <Layout>
       <Head>
         <title>Traist - {data.frontmatter.title}</title>
+        <meta name="description" content={data.frontmatter.excerpt} />
       </Head>
       <InlineForm form={form}>
         <Header />

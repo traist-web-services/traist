@@ -17,6 +17,10 @@ const Contact = () => {
     <Layout>
       <Head>
         <title>Traist - Contact Us</title>
+        <meta
+          name="description"
+          content="Get in touch to find out how we can help you."
+        />
       </Head>
       <Header />
       <div className={styles.imageContainer}>
