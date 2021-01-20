@@ -115,10 +115,6 @@ export const getStaticProps: GetStaticProps = async function ({
     slug: slug,
   });
 
-  const content = await import(`../../content/services/${fileName}`);
-  // const config = await import(`../../data/config.json`)
-  const data = matter(content.default);
-
   if (preview) {
     const githubPreviewProps = getGithubPreviewProps({
       ...previewData,
@@ -127,6 +123,10 @@ export const getStaticProps: GetStaticProps = async function ({
     });
     return githubPreviewProps;
   }
+
+  const content = await import(`../../content/services/${fileName}`);
+  // const config = await import(`../../data/config.json`)
+  const data = matter(content.default);
 
   return {
     props: {
