@@ -48,6 +48,7 @@ interface Props {
   allServices: Service[];
 }
 const Home = ({ file, allServices }: Props) => {
+  console.log("All Services", allServices);
   const slides = allServices
     ? allServices.map((thisService: Service) => {
         const service = thisService.data;
