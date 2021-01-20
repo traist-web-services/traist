@@ -78,7 +78,12 @@ const ServiceTemplate = ({ file }: Props) => {
               alt={`Illustration for the ${data.frontmatter.title} service.`}
             >
               {(props) => (
-                <Image src={props.src} layout="fill" objectFit="cover" />
+                <Image
+                  src={props.src}
+                  layout="fill"
+                  objectFit="cover"
+                  priority={true}
+                />
               )}
             </InlineImage>
           </div>
