@@ -49,7 +49,7 @@ const ServiceTemplate = ({ file }: Props) => {
         name: "frontmatter.image",
         label: "Image",
         component: "image",
-        parse: (media) => `/images/${media.slug}`,
+        parse: (media: any) => `/images/${media.slug}`,
         uploadDir: () => "public/images/",
       },
       {
@@ -73,7 +73,7 @@ const ServiceTemplate = ({ file }: Props) => {
           <div className={styles.imageContainer}>
             <InlineImage
               name="frontmatter.image"
-              parse={(media) => `/images/${media.slug}`}
+              parse={(media: any) => `/images/${media.slug}`}
               uploadDir={() => "/public/images"}
               alt={`Illustration for the ${data.frontmatter.title} service.`}
             >
