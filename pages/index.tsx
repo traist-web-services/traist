@@ -31,15 +31,16 @@ interface File {
 }
 
 interface Service {
-  slug: string;
-  frontmatter: Frontmatter;
-  body: string;
-}
-
-interface Frontmatter {
-  excerpt: string;
-  image: string;
-  title: string;
+  fileName: string;
+  fileRelativePath: string;
+  data: {
+    markdownBody: string;
+    frontmatter: {
+      excerpt: string;
+      image: string;
+      title: string;
+    };
+  };
 }
 
 interface Props {
@@ -48,12 +49,14 @@ interface Props {
 }
 const Home = ({ file, allServices }: Props) => {
   const slides = allServices
-    ? allServices.map((service) => {
+    ? allServices.map((thisService: Service) => {
+        const service = thisService.data;
+        const slug = thisService.fileName.split(".")[1];
         return {
           text: service.frontmatter.excerpt,
           image: service.frontmatter.image,
           title: service.frontmatter.title,
-          linkTo: `/services/${service.slug}`,
+          linkTo: `/services/${slug}`,
         };
       })
     : [];
@@ -94,7 +97,7 @@ export const getStaticProps: GetStaticProps = async function ({
 
     const returnObj = {
       props: {
-        allServices: await getContent({ contentType: "services" }),
+        allServices: await getContent(preview, previewData, "content/services"),
         ...githubPreviewProps.props,
       },
     };
@@ -106,7 +109,7 @@ export const getStaticProps: GetStaticProps = async function ({
       sourceProvider: null,
       error: null,
       preview: false,
-      allServices: await getContent({ contentType: "services" }),
+      allServices: await getContent(preview, previewData, "content/services"),
       file: {
         fileRelativePath: "content/home.json",
         data: (await import("../content/home.json")).default,
