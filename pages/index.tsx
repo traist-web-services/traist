@@ -122,7 +122,7 @@ export const getStaticProps: GetStaticProps = async function ({
         sha: "",
       },
     },
-    revalidate: 3,
+    //revalidate: 3,
   };
 };
 
