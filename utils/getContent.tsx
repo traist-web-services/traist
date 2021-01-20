@@ -92,7 +92,9 @@ const getContent = async (preview, previewData, contentDir) => {
     })
   );
   return content.sort((a: any, b: any) => {
-    return a?.data?.frontmatter?.sortOrder > b?.data?.frontmatter?.sortOrder;
+    if (a?.data?.frontmatter?.sortOrder > b?.data?.frontmatter?.sortOrder)
+      return -1;
+    return 1;
   });
 };
 
