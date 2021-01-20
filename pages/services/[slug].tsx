@@ -73,8 +73,12 @@ const ServiceTemplate = ({ file }: Props) => {
           <div className={styles.imageContainer}>
             <InlineImage
               name="frontmatter.image"
-              parse={(media: any) => `/images/${media.slug}`}
-              uploadDir={() => "/public/images"}
+              parse={(media: any) => {
+                console.log(media);
+                return `/images/${media.slug}`;
+              }}
+              previewSrc={(src: string) => cms.media.previewSrc(src)}
+              uploadDir={() => "/images"}
               alt={`Illustration for the ${data.frontmatter.title} service.`}
             >
               {(props) => (
@@ -94,7 +98,17 @@ const ServiceTemplate = ({ file }: Props) => {
                   <InlineTextarea name="frontmatter.title" />
                 </h1>
                 <div className={styles.content}>
-                  <InlineWysiwyg name="markdownBody" format="markdown">
+                  <InlineWysiwyg
+                    name="markdownBody"
+                    format="markdown"
+                    imageProps={{
+                      uploadDir: () => "/images",
+                      parse: (media) => media.id,
+                      previewSrc(src) {
+                        return cms.media.previewSrc(src);
+                      },
+                    }}
+                  >
                     <ReactMarkdown source={data.markdownBody} />
                   </InlineWysiwyg>
                 </div>

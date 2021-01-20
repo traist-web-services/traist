@@ -6,6 +6,11 @@ interface Props {
   children?: any;
   name: string;
   format: "markdown" | "html";
+  imageProps?: {
+    uploadDir: () => string;
+    parse: (media: any) => string;
+    previewSrc: (src: string) => Promise<string>;
+  };
 }
 
 const InlineWysiwyg = (props: Props) => {
@@ -19,12 +24,7 @@ const InlineWysiwyg = (props: Props) => {
   }, [cms.enabled]);
 
   if (InlineWysiwyg) {
-    return (
-      <InlineWysiwyg
-        sticky={props.sticky ?? "var(--tina-toolbar-height)"}
-        {...props}
-      />
-    );
+    return <InlineWysiwyg {...props} sticky="62px" />;
   }
 
   return props.children;

@@ -70,7 +70,8 @@ const PageTemplate = ({ file }: Props) => {
             <InlineImage
               name="frontmatter.image"
               parse={(media) => `/images/${media.filename}`}
-              uploadDir={() => "/public/images"}
+              uploadDir={() => "/images"}
+              previewSrc={(src: string) => cms.media.previewSrc(src)}
               alt={`Illustration for the ${data.frontmatter.title} page.`}
             >
               {(props) => (
@@ -90,7 +91,17 @@ const PageTemplate = ({ file }: Props) => {
                   <InlineTextarea name="frontmatter.title" />
                 </h1>
                 <div className={styles.content}>
-                  <InlineWysiwyg name="markdownBody" format="markdown">
+                  <InlineWysiwyg
+                    name="markdownBody"
+                    format="markdown"
+                    imageProps={{
+                      uploadDir: () => "/images",
+                      parse: (media) => media.id,
+                      previewSrc(src) {
+                        return cms.media.previewSrc(src);
+                      },
+                    }}
+                  >
                     <ReactMarkdown source={data.markdownBody} />
                   </InlineWysiwyg>
                 </div>

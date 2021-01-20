@@ -76,7 +76,7 @@ const getContent = async (preview, previewData, contentDir) => {
           data: previewProps.props.file?.data,
           slug: file
             .substring(contentDir.length + 1, file.length - 3)
-            .split(".")[1],
+            .split(".")[0],
         };
       }
       const content = fs.readFileSync(`${file}`, "utf8");
@@ -97,7 +97,7 @@ const getContent = async (preview, previewData, contentDir) => {
   );
 };
 
-const getLocalFiles = async (filePath) => {
+const getLocalFiles = async (filePath: string) => {
   // grab all md files
   const fg = require("fast-glob");
   const files = await fg(`${filePath}**/*.md`);
