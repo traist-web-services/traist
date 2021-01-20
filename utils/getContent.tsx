@@ -88,6 +88,9 @@ const getContent = async (preview, previewData, contentDir) => {
           frontmatter: data.data,
           markdownBody: data.content,
         },
+        slug: file
+          .substring(contentDir.length + 1, file.length - 3)
+          .split(".")[0],
       };
     })
   );
