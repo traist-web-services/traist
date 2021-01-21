@@ -112,12 +112,6 @@ const Menu = ({ menu = menuDefault, simple = false }: Props) => {
                 }
               )
             : ""}
-          <li
-            className={styles.closeMobileMenu}
-            onClick={() => setDisplayMobileMenu(false)}
-          >
-            X
-          </li>
         </ul>
       </li>
     );
@@ -125,28 +119,29 @@ const Menu = ({ menu = menuDefault, simple = false }: Props) => {
 
   return (
     <>
-      <div
-        className={`${styles.desktopMenu} ${
-          displayMobileMenu
-            ? styles.desktopMenu__open
-            : styles.desktopMenu__close
-        }`}
-      >
+      <div className={`${styles.menu} ${styles.desktopMenu}`}>
         <ul
-          className={`${styles.menu} ${
-            displayMobileMenu ? styles.menu__show : styles.menu__hide
+          className={`${styles.mobileMenu} ${
+            displayMobileMenu
+              ? styles.mobileMenu__open
+              : styles.mobileMenu__close
           }`}
         >
           {menuElements}
+          <li
+            className={styles.closeMobileMenu}
+            onClick={() => setDisplayMobileMenu(false)}
+          >
+            X
+          </li>
         </ul>
       </div>
-      <div className={styles.mobileMenu}>
-        <div
-          className={styles.mobileMenuTapTarget}
-          onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
-        >
-          <MenuIcon />
-        </div>
+
+      <div
+        className={styles.mobileMenuTapTarget}
+        onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
+      >
+        <MenuIcon />
       </div>
     </>
   );
