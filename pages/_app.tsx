@@ -69,7 +69,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     g.src = BASE_URL + "/packs/js/sdk.js";
     s.parentNode.insertBefore(g, s);
     g.onload = function () {
-      window.chatwootSDK.run({
+      (window as any).chatwootSDK.run({
         websiteToken: "GoXSXNe3NBNNVW2gVcndEAQG",
         baseUrl: BASE_URL,
       });
