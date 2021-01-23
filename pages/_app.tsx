@@ -59,6 +59,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   const cms = useMemo(() => new TinaCMS(tinaConfig), []);
 
+  // TODO: #22 Self-host Chatwoot, white label it, and only load the backend widget onclick to reduce bundle size.
   useEffect(() => {
     const d = document;
     const t = "script";
