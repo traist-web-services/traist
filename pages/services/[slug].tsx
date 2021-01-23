@@ -66,10 +66,7 @@ const ServiceTemplate = ({ file }: Props) => {
     <Layout>
       <Head>
         <title>Traist - {data.frontmatter.title}</title>
-        <meta
-          name="description"
-          content={data.frontmatter.excerpt}
-        />
+        <meta name="description" content={data.frontmatter.excerpt} />
       </Head>
       <InlineForm form={form}>
         <Header />
@@ -78,7 +75,6 @@ const ServiceTemplate = ({ file }: Props) => {
             <InlineImage
               name="frontmatter.image"
               parse={(media: any) => {
-                console.log(media);
                 return `/images/${media.slug}`;
               }}
               previewSrc={(src: string) => cms.media.previewSrc(src)}
