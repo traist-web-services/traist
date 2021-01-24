@@ -1,4 +1,5 @@
 import type { AppProps /*, AppContext */ } from "next/app";
+import { DefaultSeo } from "next-seo";
 import path from "path";
 path.resolve("../content"); // Let's tell Next that we need the content folder
 
@@ -77,6 +78,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, []);
   return (
     <>
+      <DefaultSeo
+        title="Traist"
+        description="Traist Web Services is a digital consultancy firm building exceptional user experiences for small to medium businesses."
+        canonical="https://traist.co.uk/"
+        titleTemplate="Traist | %s"
+      />
       <TinaProvider cms={cms}>
         <TinacmsGithubProvider
           onLogin={enterEditMode}
