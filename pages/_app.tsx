@@ -2,6 +2,7 @@ import type { AppProps /*, AppContext */ } from "next/app";
 import path from "path";
 path.resolve("../content"); // Let's tell Next that we need the content folder
 
+import { useEffect } from "react";
 import "../styles/globals.css";
 import { TinaCMS, TinaProvider, ModalProvider } from "tinacms";
 import { useMemo } from "react";
@@ -58,18 +59,36 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   const cms = useMemo(() => new TinaCMS(tinaConfig), []);
 
+  // TODO: #22 Self-host Chatwoot, white label it, and only load the backend widget onclick to reduce bundle size.
+  useEffect(() => {
+    const d = document;
+    const t = "script";
+    var BASE_URL = "https://app.chatwoot.com";
+    var g = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    g.src = BASE_URL + "/packs/js/sdk.js";
+    s.parentNode.insertBefore(g, s);
+    g.onload = function () {
+      (window as any).chatwootSDK.run({
+        websiteToken: "GoXSXNe3NBNNVW2gVcndEAQG",
+        baseUrl: BASE_URL,
+      });
+    };
+  }, []);
   return (
-    <TinaProvider cms={cms}>
-      <TinacmsGithubProvider
-        onLogin={enterEditMode}
-        onLogout={exitEditMode}
-        error={pageProps.error}
-      >
-        <ModalProvider>
-          <Component {...pageProps} />
-        </ModalProvider>
-      </TinacmsGithubProvider>
-    </TinaProvider>
+    <>
+      <TinaProvider cms={cms}>
+        <TinacmsGithubProvider
+          onLogin={enterEditMode}
+          onLogout={exitEditMode}
+          error={pageProps.error}
+        >
+          <ModalProvider>
+            <Component {...pageProps} />
+          </ModalProvider>
+        </TinacmsGithubProvider>
+      </TinaProvider>
+    </>
   );
 };
 
