@@ -75,6 +75,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         baseUrl: BASE_URL,
       });
     };
+    const analytics = d.createElement(t);
+    analytics.dataset.accountId = "7fee67fa-6c6e-416f-abbb-3f39cc0dee02";
+    analytics.src = "https://offen.traist.co.uk/script.js";
+    s.parentNode.insertBefore(analytics, s);
   }, []);
   return (
     <>
