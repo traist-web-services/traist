@@ -12,4 +12,24 @@
 	<body data-theme="traist">
 		<div id="svelte">%svelte.body%</div>
 	</body>
+	<script async src="https://offen.traist.co.uk/script.js" data-account-id="7fee67fa-6c6e-416f-abbb-3f39cc0dee02"></script>
+
+	<script async defer>
+		(function (d, t) {
+			var BASE_URL = "https://app.chatwoot.com";
+			var g = d.createElement(t),
+				s = d.getElementsByTagName(t)[0];
+			g.src = BASE_URL + "/packs/js/sdk.js";
+			g.defer = true;
+			g.async = true;
+			s
+				.parentNode
+				.insertBefore(g, s);
+			g.onload = function () {
+				window
+					.chatwootSDK
+					.run({websiteToken: 'GoXSXNe3NBNNVW2gVcndEAQG', baseUrl: BASE_URL})
+			}
+		})(document, "script");
+	</script>
 </html>
