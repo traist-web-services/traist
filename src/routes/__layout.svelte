@@ -33,10 +33,31 @@
 <script>
 	import Footer from '$lib/components/Footer.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
+	import { browser } from '$app/env';
 
 	import '../app.css';
 
 	export let pageTree = {};
+
+	if (browser) {
+		const d = document;
+		const t = 'script';
+		var BASE_URL = 'https://app.chatwoot.com';
+		var g = d.createElement(t),
+			s = d.getElementsByTagName(t)[0];
+		g.src = BASE_URL + '/packs/js/sdk.js';
+		s.parentNode.insertBefore(g, s);
+		g.onload = function () {
+			(window as any).chatwootSDK.run({
+				websiteToken: 'GoXSXNe3NBNNVW2gVcndEAQG',
+				baseUrl: BASE_URL
+			});
+		};
+		const analytics = d.createElement(t);
+		analytics.dataset.accountId = '7fee67fa-6c6e-416f-abbb-3f39cc0dee02';
+		analytics.src = 'https://offen.traist.co.uk/script.js';
+		s.parentNode.insertBefore(analytics, s);
+	}
 </script>
 
 <svelte:head><title>Traist Web Services</title></svelte:head>
