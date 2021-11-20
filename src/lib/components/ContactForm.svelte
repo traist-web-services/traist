@@ -43,7 +43,6 @@
 </script>
 
 <form on:submit|preventDefault={submissionHandler}>
-	<h1 class="mb-4 text-3xl font-bold lg:text-6xl">Get in touch</h1>
 	<div class="form-control">
 		<label class="label" for="name">Name</label>
 		<input
@@ -73,7 +72,9 @@
 		/>
 	</div>
 	<div class="flex">
-		<button type="submit" class="mr-4 font-normal normal-case btn btn-primary"
+		<button
+			type="submit"
+			class="bg-primary hover:bg-primary-focus text-primary-content px-2 py-2 transition-colors duration-200 text-xl"
 			>Send us a message!</button
 		>
 		{#if error}
@@ -125,5 +126,10 @@
 	.label,
 	button {
 		@apply md:text-2xl;
+	}
+
+	input,
+	textarea {
+		border-radius: 0;
 	}
 </style>

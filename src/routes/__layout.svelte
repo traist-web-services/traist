@@ -20,23 +20,22 @@
 		}
 
 		return {
-			stuff: {
+			props: {
 				pageTree
 			},
-			props: {
+			stuff: {
 				pageTree
 			}
 		};
 	};
 </script>
 
-<script>
-	import Footer from '$lib/components/Footer.svelte';
-	import Navbar from '$lib/components/Navbar.svelte';
-
+<script lang="ts">
 	import '../app.css';
-
-	export let pageTree = {};
+	import Footer from '$lib/components/Footer.svelte';
+	import type { NavItem } from '$lib/types/NavItem';
+	import JumpToTop from '$lib/components/JumpToTop.svelte';
+	export let pageTree: NavItem;
 </script>
 
 <svelte:head
@@ -47,8 +46,15 @@
 	/></svelte:head
 >
 
-<div class="flex flex-col min-h-screen">
+<!-- <div class="flex flex-col min-h-screen">
 	<Navbar {pageTree} />
-	<div class="flex flex-col justify-center flex-1"><slot /></div>
-	<Footer {pageTree} />
-</div>
+	<div class="flex flex-col justify-center flex-1">
+	-->
+
+<slot />
+
+<Footer {pageTree} />
+<JumpToTop />
+<!--</div>
+	
+</div>-->

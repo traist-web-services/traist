@@ -1,15 +1,14 @@
 <script lang="ts">
-	import { transition_in } from 'svelte/internal';
+	import type { NavItem } from '$lib/types/NavItem';
+	export let pageTree: NavItem;
 
-	export let pageTree = {};
-
-	const getSortOrder = (item) => {
+	const getSortOrder = (item: NavItem) => {
 		if (!item) return;
 		if (item.sort) return item.sort;
 		return getSortOrder(item[Object.keys(item)[0]]);
 	};
 
-	const linkify = (item, name) => {
+	const linkify = (item: NavItem, name?: string) => {
 		if (item.id) {
 			return {
 				item,
@@ -33,11 +32,11 @@
 	};
 
 	const { children: navArr } = linkify(pageTree);
-	navArr.sort((a, b) => a.sort - b.sort);
+	navArr.sort((a: NavItem, b: NavItem) => a.sort - b.sort);
 </script>
 
 <footer
-	class="grid items-center gap-8 p-10 grid:cols:1 lg:grid-cols-3 bg-neutral text-neutral-content"
+	class="grid items-center gap-8 p-5 lg:p-10 grid:cols:1 lg:grid-cols-3 bg-neutral text-neutral-content"
 >
 	<div class="h-full lg:border-r-2 border-base-100">
 		<h1 class="mb-4 text-2xl font-bold lowercase">

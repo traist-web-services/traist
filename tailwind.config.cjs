@@ -8,7 +8,16 @@ const config = {
 		fontFamily: {
 			sans: ['"Atkinson Hyperlegible"', ...defaultTheme.fontFamily.sans]
 		},
-		extend: {}
+		extend: {
+			width: {
+				gr1: '38.2%',
+				gr2: '61.8%'
+			},
+			height: {
+				gr1: '38.2%',
+				gr2: '61.8%'
+			}
+		}
 	},
 
 	plugins: [require('@tailwindcss/typography'), require('daisyui')],

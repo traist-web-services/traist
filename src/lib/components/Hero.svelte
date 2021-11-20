@@ -1,28 +1,37 @@
-<script>
-	let clientW = 0;
+<script lang="ts">
+	import { leftPad } from '$lib/utilities';
+	export let mainNav = [];
 </script>
 
-<div
-	class="min-h-screen hero bg-base-100"
-	style="background-image: url(https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=compress&fit=crop&w={clientW}&blur=75&monochrome=0C6291&bri=30&con=-30)"
-	bind:clientWidth={clientW}
->
-	<div class="flex-col hero-content lg:flex-row-reverse">
-		<div>
-			<h1 class="py-3 text-5xl font-bold md:text-6xl lg:text-9xl">
-				Your business.<br />Our solutions.
-			</h1>
-			<div class="max-w-3xl text-xl prose md:text-2xl lg:text-3xl;">
-				<p class="mb-5  text-xl prose md:text-2xl lg:text-3xl;">
-					Need a partner to help you make the most of web technologies?
-				</p>
-				<p class="mb-5 text-xl prose md:text-2xl lg:text-3xl;">
-					Traist specialises in building bespoke solutions to maximise value across your business.
-				</p>
-				<button class="text-xl font-normal normal-case btn btn-primary"
-					>What are you planning?</button
-				>
-			</div>
+<main class="md:h-gr2 flex flex-col md:flex-row items-center justify-between">
+	<div
+		class="w-full flex flex-col items-center md:w-gr2 text-5xl lg:text-9xl font-bold p-5 border-r h-full justify-center"
+	>
+		<h1>Your business.</h1>
+		<h2>Our solutions.</h2>
+	</div>
+	<div class="h-full w-full lg:w-gr1 flex px-5 items-center justify-center lg:bg-base-200">
+		<div class="pl-6 lg:text-5xl lg:w-full">
+			<ol class="lg:w-full">
+				{#each mainNav as navItem, index}
+					<li class="py-2 lg:py-4 group">
+						<a
+							href={navItem.link}
+							class="border-l-4 lg:border-l-8 pl-1 group-hover:border-primary transition-colors flex items-center"
+							><span class="rotated hidden lg:inline">{leftPad(index + 1, 2)}</span><span
+								class="inline lg:hidden">{leftPad(index + 1, 2)}</span
+							>
+							<span class="pl-2 lg:pl-8 w-full">{navItem.label}</span></a
+						>
+					</li>
+				{/each}
+			</ol>
 		</div>
 	</div>
-</div>
+</main>
+
+<style>
+	.rotated {
+		writing-mode: vertical-rl;
+	}
+</style>
