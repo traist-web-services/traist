@@ -43,7 +43,7 @@
 </script>
 
 <form on:submit|preventDefault={submissionHandler}>
-	<h1 class="mb-4 text-6xl font-bold">Get in touch</h1>
+	<h1 class="mb-4 text-3xl font-bold lg:text-6xl">Get in touch</h1>
 	<div class="form-control">
 		<label class="label" for="name">Name</label>
 		<input
@@ -69,7 +69,7 @@
 			bind:value={formData.message}
 			name="message"
 			required
-			class="h-64 input input-primary input-bordered"
+			class="h-32 md:h-64 input input-primary input-bordered"
 		/>
 	</div>
 	<div class="flex">
@@ -124,6 +124,6 @@
 <style>
 	.label,
 	button {
-		@apply text-2xl;
+		@apply md:text-2xl;
 	}
 </style>
