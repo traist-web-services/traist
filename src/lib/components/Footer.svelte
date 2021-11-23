@@ -45,20 +45,18 @@
 		<a href="mailto:hi@traist.co.uk" class="text-xl">hi@traist.co.uk</a>
 	</div>
 	<div class="h-full text-xl lowercase lg:border-r-2 border-base-100">
-		<h1 class="text-2xl font-bold ">Pages</h1>
+		<h1 class="text-2xl font-bold">Pages</h1>
 		{#each navArr as navItem, index}
 			{#if navItem.type === 'link'}
-				<a class="text-xl lowercase" href="/{navItem.linkTo}" tabindex={index}
-					>{navItem.item.title}</a
-				>
+				<a class="text-xl lowercase" href="/{navItem.linkTo}">{navItem.item.title}</a>
 			{:else}
 				<div class="">
-					<div tabindex={index} class="lowercase">
+					<div class="lowercase">
 						{navItem.name}
 					</div>
 					<ul class="ml-6 lowercase">
 						{#each navItem.children as child, childIndex}
-							<li class="py-1" tabindex={childIndex}>
+							<li class="py-1">
 								<a href="/{child.linkTo}">{child.name}</a>
 							</li>
 						{/each}
