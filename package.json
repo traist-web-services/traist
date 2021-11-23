@@ -33,7 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@joeinnes/svelte-image": "^0.0.2",
+		"@joeinnes/svelte-image": "^0.0.4",
 		"@tailwindcss/typography": "^0.4.1",
 		"daisyui": "^1.16.2",
 		"svelte-markdown": "^0.1.14"

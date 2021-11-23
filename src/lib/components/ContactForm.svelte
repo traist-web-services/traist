@@ -42,7 +42,7 @@
 	};
 </script>
 
-<form on:submit|preventDefault={submissionHandler}>
+<form on:submit|preventDefault={submissionHandler} class="h-full">
 	<div class="form-control">
 		<label class="label" for="name">Name</label>
 		<input
@@ -71,10 +71,10 @@
 			class="h-32 md:h-64 input input-primary input-bordered"
 		/>
 	</div>
-	<div class="flex">
+	<div class="flex flex-col">
 		<button
 			type="submit"
-			class="bg-primary hover:bg-primary-focus text-primary-content px-2 py-2 transition-colors duration-200 text-xl"
+			class="bg-primary hover:bg-primary-focus text-primary-content px-2 py-2 transition-colors duration-200 text-xl mb-4"
 			>Send us a message!</button
 		>
 		{#if error}
@@ -99,11 +99,11 @@
 			</div>
 		{/if}
 		{#if success}
-			<div class="flex-1 alert alert-success bg-neutral" transition:fly>
+			<div class="flex alert alert-success text-base-content border-success" transition:fly>
 				<div class="flex-1">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						class="w-6 h-6"
+						class="w-8 h-8"
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor"
@@ -115,8 +115,8 @@
 							d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
 						/>
 					</svg>
-					<span>Your form was submitted! Someone will be in touch shortly.</span>
 				</div>
+				<p class="pl-2">Your form was submitted! Someone will be in touch shortly.</p>
 			</div>
 		{/if}
 	</div>

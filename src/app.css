@@ -1,5 +1,4 @@
 /* Write your global styles here, in PostCSS syntax */
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,7 +8,7 @@ body {
 	margin: 0;
 	padding: 0;
 	scroll-behavior: smooth;
-	overflow-x: hidden;
+	scroll-padding-block: 10%;
 }
 body {
 	font-family: 'Atkinson Hyperlegible';

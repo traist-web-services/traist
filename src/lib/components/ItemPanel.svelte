@@ -12,19 +12,22 @@
 	export let index = 0;
 </script>
 
-<div class="lg:h-screen w-full bg-base-100 p-5 lg:p-0 border-b lg:border-0" id={service.name}>
-	<div class="h-gr1 flex w-full items-end" class:flex-row-reverse={index % 2}>
-		<div
-			class="w-full lg:w-gr1 flex text-4xl lg:text-5xl font-bold py-5 justify-start {index % 2
-				? 'lg:justify-start'
-				: 'lg:justify-end'}"
-		>
-			<a href="/{service.name}">{leftPad(index + 1, 2)}. {service.title}</a>
-		</div>
-	</div>
-	<section class="h-gr2 flex flex-col {index % 2 ? 'lg:flex-row-reverse' : 'lg:flex-row'}">
-		<div class="w-full lg:w-gr1 h-full ">
-			<div style="aspect-ratio: 1/1">
+<section
+	class="lg:h-screen w-full bg-base-100 grid place-items-center pb-8 lg:pb-0"
+	id={service.name}
+>
+	<div
+		class="min-h-gr2 flex flex-col {index % 2
+			? 'lg:flex-row-reverse'
+			: 'lg:flex-row'} overflow-hidden w-full"
+	>
+		<div class="lg:w-gr1 h-full pt-2 pb-4 overflow-hidden">
+			<div class="lg:border-b-4 border-base-content" />
+			<a
+				class="text-3xl lg:text-4xl font-bold base-content-focus inline-block py-4 px-4 lg:px-0"
+				href="/{service.name}"><h2>{leftPad(index + 1, 2)}. {service.title}</h2></a
+			>
+			<div style="aspect-ratio: 1/1;">
 				<Image
 					src="https://api.traist.co.uk/assets/{service.image}?file.jpg"
 					aspectRatio="1/1"
@@ -32,7 +35,7 @@
 				/>
 			</div>
 		</div>
-		<div class="w-full lg:w-gr2 py-5 lg:p-5 h-full">
+		<div class="w-full lg:w-gr2 px-4 h-full">
 			<div class="prose lg:prose-xl">
 				<SvelteMarkdown source={service.summary} />
 			</div>
@@ -44,5 +47,5 @@
 				>
 			</div>
 		</div>
-	</section>
-</div>
+	</div>
+</section>

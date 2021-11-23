@@ -46,17 +46,19 @@
 	</div>
 	<div class="h-full text-xl lowercase lg:border-r-2 border-base-100">
 		<h1 class="text-2xl font-bold ">Pages</h1>
-		{#each navArr as navItem}
+		{#each navArr as navItem, index}
 			{#if navItem.type === 'link'}
-				<a class="lowercase" href="/{navItem.linkTo}">{navItem.item.title}</a>
+				<a class="text-xl lowercase" href="/{navItem.linkTo}" tabindex={index}
+					>{navItem.item.title}</a
+				>
 			{:else}
 				<div class="">
-					<div tabindex="0" class="lowercase">
+					<div tabindex={index} class="lowercase">
 						{navItem.name}
 					</div>
-					<ul tabindex="0" class="ml-6 lowercase">
-						{#each navItem.children as child}
-							<li class="py-1">
+					<ul class="ml-6 lowercase">
+						{#each navItem.children as child, childIndex}
+							<li class="py-1" tabindex={childIndex}>
 								<a href="/{child.linkTo}">{child.name}</a>
 							</li>
 						{/each}
@@ -77,19 +79,7 @@
 		<p>
 			Traist cares about your privacy rights online. We only store data you've expressly chosen to
 			share with us (eg: by sending a message through the form embedded on the site, or using the
-			chat function). We use third party providers for this who have their own privacy policies,
-			which we are satisfied with but you may want to check yourself (Chatwoot provide our chat
-			solution as a hosted service currently). We gather some analytics data ourselves using a tool
-			called 'Offen'. All data is deleted after six months. You can see the data we have about you
-			(and delete it if you like) by clicking below:
+			chat function).
 		</p>
-		<div class="flex justify-center mt-4">
-			<a href="https://offen.traist.co.uk/auditorium"
-				><img
-					src="https://offen.traist.co.uk/user-access-widget-box-en.svg"
-					alt="User access widget for Offen"
-				/></a
-			>
-		</div>
 	</div>
 </footer>
