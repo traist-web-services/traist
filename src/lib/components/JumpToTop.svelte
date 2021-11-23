@@ -15,6 +15,8 @@
 		class="z-30 w-10 h-10 p-1 bg-primary fixed bottom-4 right-0 border-primary border-l border-t border-b text-primary-content cursor-pointer transition-colors duration-200"
 		href="#home"
 		transition:fly={{ x: 100, duration: 800 }}
+		name="Jump to top"
+		aria-label="Jump to top"
 	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
