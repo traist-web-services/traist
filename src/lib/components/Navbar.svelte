@@ -63,7 +63,11 @@
 			{/each}
 		</ol>
 	</nav>
-	<button class="btn btn-sm btn-ghost lg:hidden" on:click={() => (showMobileNav = !showMobileNav)}
+	<button
+		class="btn btn-sm btn-ghost lg:hidden"
+		aria-hidden="true"
+		aria-label="Mobile nav menu"
+		on:click={() => (showMobileNav = !showMobileNav)}
 		><svg
 			xmlns="http://www.w3.org/2000/svg"
 			class="h-6 w-6"

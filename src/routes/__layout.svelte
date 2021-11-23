@@ -43,6 +43,9 @@
 	<meta
 		name="robots"
 		content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+	/><meta
+		name="description"
+		content="Traist Web Services is a digital consultancy firm building exceptional user experiences for small to medium businesses."
 	/></svelte:head
 >
 

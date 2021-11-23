@@ -48,6 +48,7 @@
 		<input
 			bind:value={formData.name}
 			name="name"
+			id="name"
 			class="input input-primary input-bordered"
 			required
 		/>
@@ -57,6 +58,7 @@
 		<input
 			bind:value={formData.email}
 			name="email"
+			id="email"
 			class="input input-primary input-bordered"
 			required
 			type="email"
@@ -67,6 +69,7 @@
 		<textarea
 			bind:value={formData.message}
 			name="message"
+			id="message"
 			required
 			class="h-32 md:h-64 input input-primary input-bordered"
 		/>
