@@ -40,7 +40,7 @@
 			<div class="lg:border-b-4 border-base-content" />
 			<a
 				class="text-3xl lg:text-4xl font-bold base-content-focus inline-block py-4"
-				href="/{page.name}"><h2>{page.title}</h2></a
+				href="/{page.name}"><h1>{page.title}</h1></a
 			>
 			{#if page.image}
 				<div style="aspect-ratio: 1/1">
