@@ -3,6 +3,10 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 </script>
 
+<svelte:head>
+	<link rel="canonical" href="https://traist.co.uk/contact" />
+</svelte:head>
+
 <!-- Manually create this route to add the form, ignore CMS route -->
 <Navbar />
 <section class="w-full lg:w-gr2 mx-auto overflow-hidden bg-base-100 p-4 lg:p-8">

@@ -5,23 +5,32 @@
 		);
 		const { data: pages } = await pageRes.json();
 		return {
-			props: { page: pages[0] }
+			props: { page: pages[0], slug: page.params.slug }
 		};
 	};
 </script>
 
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
+	import CustomHeaderRenderer from '$lib/components/CustomHeaderRenderer.svelte';
 	import { Image } from '@joeinnes/svelte-image';
 	import SvelteMarkdown from 'svelte-markdown';
 	export let page;
+	export let slug = '';
+	const renderers = {
+		heading: CustomHeaderRenderer
+	};
 	let imgSrc = '';
 	$: {
 		imgSrc = page?.image ? `https://api.traist.co.uk/assets/${page.image}.jpg` : null;
 	}
 </script>
 
-<svelte:head><meta name="description" content={page?.summary} /></svelte:head>
+<svelte:head>
+	<meta name="description" content={page.summary ? page.summary : page.content} />
+	<title>Traist Web Services {page.title ? ' | ' + page.title : ''}</title>
+	<link rel="canonical" href="https://traist.co.uk/{slug}" />
+</svelte:head>
 
 <Navbar />
 
@@ -44,7 +53,7 @@
 			{/if}
 		</div>
 		<div class="w-full lg:w-gr2 px-0 lg:px-8 h-full">
-			<div class="mb-8 prose md:prose-xl"><SvelteMarkdown source={page.content} /></div>
+			<div class="mb-8 prose md:prose-xl"><SvelteMarkdown source={page.content} {renderers} /></div>
 			{#if page.show_cta}
 				<div>
 					<a href="/pages/{page.name}" class="text-xl font-normal normal-case btn btn-primary"
@@ -55,9 +64,3 @@
 		</div>
 	</div>
 </section>
-
-<style>
-	:global(.prose h1) {
-		@apply text-xl lg:text-3xl;
-	}
-</style>

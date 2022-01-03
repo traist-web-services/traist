@@ -39,13 +39,13 @@
 	class="grid items-center gap-8 p-5 lg:p-10 grid:cols:1 lg:grid-cols-3 bg-neutral text-neutral-content"
 >
 	<div class="h-full lg:border-r-2 border-base-100">
-		<h1 class="mb-4 text-2xl font-bold lowercase">
+		<h2 class="mb-4 text-2xl font-bold lowercase">
 			traist web services &copy; {new Date().getFullYear()}
-		</h1>
+		</h2>
 		<a href="mailto:hi@traist.co.uk" class="text-xl">hi@traist.co.uk</a>
 	</div>
 	<div class="h-full text-xl lowercase lg:border-r-2 border-base-100">
-		<h1 class="text-2xl font-bold">Pages</h1>
+		<h2 class="text-2xl font-bold">Pages</h2>
 		{#each navArr as navItem, index}
 			{#if navItem.type === 'link'}
 				<a class="text-xl lowercase" href="/{navItem.linkTo}">{navItem.item.title}</a>
@@ -66,7 +66,7 @@
 		{/each}
 	</div>
 	<div class="h-full lowercase">
-		<h1 class="text-2xl font-bold">About</h1>
+		<h2 class="text-2xl font-bold">About</h2>
 		<p>
 			Traist Web Services is a digital consultancy firm building exceptional user experiences for
 			small to medium businesses.

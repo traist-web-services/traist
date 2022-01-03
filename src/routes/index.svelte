@@ -43,6 +43,10 @@
 	const serviceList = Object.keys(services).map((service) => services[service]);
 </script>
 
+<svelte:head>
+	<link rel="canonical" href="https://traist.co.uk/" />
+</svelte:head>
+
 <SuperHero />
 <Navbar />
 <div class="overflow-x-hidden">

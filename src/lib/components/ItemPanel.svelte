@@ -28,11 +28,13 @@
 				href="/{service.name}"><h2>{leftPad(index + 1, 2)}. {service.title}</h2></a
 			>
 			<div style="aspect-ratio: 1/1;">
-				<Image
-					src="https://api.traist.co.uk/assets/{service.image}?file.jpg"
-					aspectRatio="1/1"
-					alt={service.title}
-				/>
+				{#if service.image}
+					<Image
+						src="https://api.traist.co.uk/assets/{service.image}?file.jpg"
+						aspectRatio="1/1"
+						alt={service.title}
+					/>
+				{/if}
 			</div>
 		</div>
 		<div class="w-full lg:w-gr2 px-4 h-full">
