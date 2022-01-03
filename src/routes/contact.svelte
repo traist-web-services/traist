@@ -4,6 +4,7 @@
 </script>
 
 <svelte:head>
+	<title>Traist Web Services | Contact</title>
 	<link rel="canonical" href="https://traist.co.uk/contact" />
 </svelte:head>
 
