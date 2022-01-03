@@ -45,6 +45,10 @@
 
 <svelte:head>
 	<link rel="canonical" href="https://traist.co.uk/" />
+	<meta
+		name="description"
+		content="Traist Web Services is a digital consultancy firm building exceptional user experiences for small to medium businesses."
+	/>
 </svelte:head>
 
 <SuperHero />

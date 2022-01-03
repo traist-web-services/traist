@@ -6,6 +6,7 @@
 <svelte:head>
 	<title>Traist Web Services | Contact</title>
 	<link rel="canonical" href="https://traist.co.uk/contact" />
+	<meta name="description" content="Contact page for Traist Web Services." />
 </svelte:head>
 
 <!-- Manually create this route to add the form, ignore CMS route -->

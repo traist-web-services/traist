@@ -27,7 +27,7 @@
 </script>
 
 <svelte:head>
-	<meta name="description" content={page.summary ? page.summary : page.content} />
+	<meta name="description" content={page.summary} />
 	<title>Traist Web Services {page.title ? ' | ' + page.title : ''}</title>
 	<link rel="canonical" href="https://traist.co.uk/{slug}" />
 </svelte:head>
